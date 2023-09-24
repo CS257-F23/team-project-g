@@ -45,7 +45,7 @@ Scott, M. (2022, August 22). *Chick-fil-A nutritional facts and allergens 2022.*
 
 **1. Allergen Alert:**
 
-Users input in advance specific allergens they need to avoid (e.g., gluten, dairy, egg). Our project will offer recommendation of food and drinks to our users according to that list.
+Users input in advance specific allergens they need to avoid (e.g., gluten, dairy, egg). Our project will offer recommendations of food and drinks to our users according to that list.
 
 **2. Custom Meal Suggestion:**
 
