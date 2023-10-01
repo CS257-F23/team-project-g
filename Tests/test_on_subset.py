@@ -40,8 +40,8 @@ class Test_get_restriction(unittest.TestCase):
 
     def test_get_restriction_main_basic(self):
         """Check if ____.py works for valid command line arguments"""
-        food1 = "'Crispy Bell Peppers'"
-        food2 = "'Garden Herb Ranch Dressing'"
+        food1 = "Crispy Bell Peppers"
+        food2 = "Garden Herb Ranch Dressing"
         option = "-diet"
         expected = "['Dairy','Egg', 'Wheat']"
         file_path = 'ProductionCode/____.py' #path to the production code
