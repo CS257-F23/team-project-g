@@ -93,19 +93,11 @@ Lee: note-taking, summarizing a to-do list for after the meeting
 
 Austin: manage and look up all the code base/ database for reference in meeting
 
-### Meeting time and location:
+### Roles and responsibilities (for specific features):
 
-We will meet twice a week, two hours each, normally on Wednesdays and Sundays afternoons in Olin CS lab.
+Charlie and Lee: mainly responsible for creating features that look up food calories by name and return a list of food based on specific dietary restrictions.
 
-### Roles and responsibilities (in meetings & discussions):
-
-Charlie: setting agendas, contact with team members
-
-Hank: facilitate discussion
-
-Lee: note-taking, summarizing a to-do list for after the meeting
-
-Austin: manage and look up all the code base/ database for reference in meeting
+Austin and Hank: mainly responsible for creating features that return all the allergies given a list of food, and new features that we might have along the way.
 
 ### Primary communication method:
 
@@ -122,16 +114,6 @@ We will communicate with each other via email(sharing work) and WhatsApp (settin
 ### Rules for communication (frequency and consequences)
 
 Team members need to check group chat, email twice a day and reply to questions from other group members within 24 hours. If there’s a team member who hasn’t been communicating, the other team members are responsible for calling that team member on the phone to check in and ask for active engagement.  If the team member refuses to actively participate or communicate, the situation will be discussed with the professor.
-
-#### Phone numbers:
-
-Charlie: 5075812575
-
-Lee: 5075813820
-
-Austin: 5075819175
-
-Hank: 5075817827
 
 ### Usage of technology:
 
