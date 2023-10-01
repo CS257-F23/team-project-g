@@ -23,7 +23,9 @@ class Test_command_line(unittest.TestCase):
         self.assertCountEqual(get_restriction(food),expected)
 
     def test_get_restriction_no_food(self):
-        
+        food = []
+        self.assertRaises(ValueError, get_restriction, food)
+
     
         
 
