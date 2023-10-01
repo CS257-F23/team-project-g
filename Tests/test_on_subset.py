@@ -2,7 +2,7 @@ import subprocess
 import unittest
 #from ProductionCode import *
 
-class Test_command_line(unittest.TestCase):
+class Test_get_restriction(unittest.TestCase):
     #testing get_cell (basic test)
     load_subset_data()
     def test_get_restriction_one_food(self):
