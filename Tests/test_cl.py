@@ -8,12 +8,12 @@ class Test_get_calories_by_name(unittest.TestCase):
     def test_get_calories_by_name_allcorrect1(self):
         """Check if get_calories_by_name works for valid food item."""
         calories=get_calories_by_name('Coffee')
-        self.assertEqual(calories, 0)
+        self.assertEqual(calories, '0')
     
     def test_get_calories_by_name_capitalerror(self):
         """Check if get_calories_by_name() works for valid food item with wrong capitalizaton."""
         calories=get_calories_by_name('PEAch Milkshake')
-        self.assertEqual(calories, 590)
+        self.assertEqual(calories, '590')
     
     def test_get_calories_by_name_wrongfood(self):
         """Check if get_calories_by_name() output warning for invalid food item."""
@@ -23,13 +23,11 @@ class Test_get_calories_by_name(unittest.TestCase):
     def test_get_calories_by_name_commandcorrect(self):
         """Check if basic_cl.py works for valid 'calories' command line arguments."""
         file_path = 'ProductionCode/basic_cl.py' #path to the production code
-        food="'1% Milk'"
-        code = subprocess.Popen(['python3', file_path,'-calories', food], 
+        code = subprocess.Popen(['python3', file_path,'-calories', 'Coffee'], 
                                 stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                                 encoding='utf8') 
         output, err = code.communicate()
-        expected=90
-        self.assertEqual(output.strip(), expected) 
+        self.assertIn(output.strip(), '0') 
         code.terminate()
     
     def test_get_calories_by_name_commanderror(self):

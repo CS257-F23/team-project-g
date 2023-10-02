@@ -129,7 +129,7 @@ def get_calories_by_name(value):
     if target_row == -1:
         print("Sorry, the item you are searching for is not in the menu of Chick-fil-A.")
         return
-    print(data[target_row]["Calories"])
+    return data[target_row]["Calories"]
 
 def get_row_index(input):
     global data
@@ -167,7 +167,7 @@ def main():
     
     if sys.argv[1] == "-calories":
         if len(sys.argv) != 3:
-            print("Usage: python3 Production/basic_cl.py -calories 'food'")
+            print("Usage: python3 ProductionCode/basic_cl.py -calories 'food'")
             return
         get_calories_by_name(sys.argv[2])
 
