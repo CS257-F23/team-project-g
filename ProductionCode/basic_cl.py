@@ -139,9 +139,8 @@ def get_calories_by_name(value):
 def get_row_index(input):
     global data
     index = []
-    for row in range(len(data)):
-        if data[row]["Item"] in input:
-            index.append(row)
+    for item in input:
+        index.append(get_row(item))
     return index
 
 def get_sum(index, allergies):
@@ -155,6 +154,9 @@ def get_sum(index, allergies):
 def get_restriction(input):
     global data
     input_index = get_row_index(input)
+    for index in input_index:
+        if index == -1:
+            return "Usage : python3 Production/basic_cl.py -diet 'food1' 'food2'"
     lst = ["Dairy","Egg","Soy","Wheat","Tree Nuts","Fish"]
     result = []
     for allergy_items in lst:
@@ -168,19 +170,23 @@ def get_restriction(input):
     return output
 
 def main():
-    original_data = load_data()
-    
+    load_data()
     if sys.argv[1] == "-calories":
         if len(sys.argv) != 3:
             print("Usage: python3 ProductionCode/basic_cl.py -calories 'food'")
             return
         get_calories_by_name(sys.argv[2])
-
-    test = load_data_subset()
-
     
-    # if sys.argv[1] == "-diet":
-    #     get_restrictions()
+    elif sys.argv[1] == "-diet":
+        if len(sys.argv) <= 2:
+            print("Usage : python3 Production/basic_cl.py -diet 'food1' 'food2'")
+        else:
+            print(get_restriction(sys.argv[2:]))
+    
+    else:
+        print("usage method not found, please use one of the usage method below: \n"+
+              "Usage: python3 ProductionCode/basic_cl.py -calories 'food'\n" +
+              "Usage: python3 Production/basic_cl.py -diet 'food1' 'food2'")
 
 if __name__ == "__main__":
     main()
