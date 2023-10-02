@@ -115,6 +115,9 @@ def load_data_subset():
     return data
 
 def get_row(value):
+    '''Arguments: value(string)
+Return value: the row that the food value is in
+Purpose: get the row of a specified food'''
     global data
     target_value = value.lower()
     target_row = 0
@@ -128,6 +131,9 @@ def get_row(value):
         return -1
 
 def get_calories_by_name(value):
+    '''Arguments: value(string)
+Return value: the calories column of the row that the food is in
+Purpose: get calories of a specified food'''
     global data
     target_row = get_row(value)
 
