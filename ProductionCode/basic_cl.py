@@ -13,26 +13,28 @@ def load_data():
         item = fields[0]
         size = fields[1]
         calories = fields[2]
-        sat = fields[3]
-        trans = fields[4]
-        cholesterol = fields[5]
-        sodium = fields[6]
-        carbo = fields[7]
-        fiber = fields[8]
-        sugar = fields[9]
-        protein = fields[10]
-        dairy = fields[11]
-        egg = fields[12]
-        soy = fields[13]
-        wheat = fields[14]
-        tree = fields[15]
-        fish = fields[16]
+        fat = fields[3]
+        sat = fields[4]
+        trans = fields[5]
+        cholesterol = fields[6]
+        sodium = fields[7]
+        carbo = fields[8]
+        fiber = fields[9]
+        sugar = fields[10]
+        protein = fields[11]
+        dairy = fields[12]
+        egg = fields[13]
+        soy = fields[14]
+        wheat = fields[15]
+        tree = fields[16]
+        fish = fields[17]
 
         # Create a dictionary for each row
         row = {
                 'Item': item,
                 'Size': size,
                 'Calories': calories,
+                'Fat': fat,
                 'SaturatedFat': sat,
                 'TransFat': trans,
                 'Cholesterol': cholesterol,
@@ -45,7 +47,7 @@ def load_data():
                 'Egg': egg,
                 'Soy': soy,
                 'Wheat': wheat,
-                'TreeNuts': tree,
+                'Tree Nuts': tree,
                 'Fish': fish
         }
 
@@ -67,26 +69,28 @@ def load_data_subset():
         item = fields[0]
         size = fields[1]
         calories = fields[2]
-        sat = fields[3]
-        trans = fields[4]
-        cholesterol = fields[5]
-        sodium = fields[6]
-        carbo = fields[7]
-        fiber = fields[8]
-        sugar = fields[9]
-        protein = fields[10]
-        dairy = fields[11]
-        egg = fields[12]
-        soy = fields[13]
-        wheat = fields[14]
-        tree = fields[15]
-        fish = fields[16]
+        fat = fields[3]
+        sat = fields[4]
+        trans = fields[5]
+        cholesterol = fields[6]
+        sodium = fields[7]
+        carbo = fields[8]
+        fiber = fields[9]
+        sugar = fields[10]
+        protein = fields[11]
+        dairy = fields[12]
+        egg = fields[13]
+        soy = fields[14]
+        wheat = fields[15]
+        tree = fields[16]
+        fish = fields[17]
 
         # Create a dictionary for each row
         row = {
                 'Item': item,
                 'Size': size,
                 'Calories': calories,
+                'Fat': fat,
                 'SaturatedFat': sat,
                 'TransFat': trans,
                 'Cholesterol': cholesterol,
@@ -99,9 +103,10 @@ def load_data_subset():
                 'Egg': egg,
                 'Soy': soy,
                 'Wheat': wheat,
-                'TreeNuts': tree,
+                'Tree Nuts': tree,
                 'Fish': fish
         }
+
 
         data.append(row)
     
@@ -132,8 +137,8 @@ def get_sum(index, allergies):
     global data
     sum = 0
     for row in index:
-        if data[row][allergies] == 1:
-            sum += 1
+        if data[row][allergies] == "1":
+            sum = sum + 1
     return sum
 
 def get_restriction(input):
@@ -160,8 +165,17 @@ def main():
     #     get_calories_by_name(sys.argv[2], original_data)
     # hank: commented above to test get_restr
 
-    test = load_data_subset()
+    # test = load_data_subset()
 
     
     # if sys.argv[1] == "-diet":
     #     get_restrictions()
+    data = load_data_subset()
+    # print(get_restriction(["Crispy Bell Peppers", "Garden Herb Ranch Dressing"]))
+    print(get_restriction(["Crispy Bell Peppers"]))
+    
+    # if sys.argv[1] == "-diet":
+    #     get_restrictions()
+
+if __name__ == "__main__":
+    main()
