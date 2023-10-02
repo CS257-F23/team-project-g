@@ -115,6 +115,7 @@ def load_data_subset():
     return data
 
 def get_row(value):
+    """Purpose: take a single food name as input and output the row it is in in the dataset"""
     global data
     target_value = value.lower()
     target_row = 0
@@ -128,6 +129,7 @@ def get_row(value):
         return -1
 
 def get_calories_by_name(value):
+    """Purpose: take a single food name as input and output the calories of the food"""
     global data
     target_row = get_row(value)
 
