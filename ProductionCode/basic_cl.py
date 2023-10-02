@@ -132,14 +132,13 @@ Purpose: get the row of a specified food'''
 
 def get_calories_by_name(value):
     '''Arguments: value(string)
-Return value: the calories column of the row that the food is in
+Return value: the calories column of the row that the food is in, or if it is not in the list, return a message
 Purpose: get calories of a specified food'''
     global data
     target_row = get_row(value)
 
     if target_row == -1:
-        print("Sorry, the item you are searching for is not in the menu of Chick-fil-A.")
-        return
+        return "Sorry, the item you are searching for is not in the menu of Chick-fil-A."
     return data[target_row]["Calories"]
 
 def get_row_index(input):
@@ -180,19 +179,18 @@ def main():
     if sys.argv[1] == "-calories":
         if len(sys.argv) != 3:
             print("Usage: python3 ProductionCode/basic_cl.py -calories 'food'")
-            return
-        get_calories_by_name(sys.argv[2])
+        else:
+            print(get_calories_by_name(sys.argv[2]))
     
     elif sys.argv[1] == "-diet":
         if len(sys.argv) <= 2:
             print("Usage : python3 Production/basic_cl.py -diet 'food1' 'food2'")
         else:
             print(get_restriction(sys.argv[2:]))
-    
     else:
-        print("usage method not found, please use one of the usage method below: \n"+
-              "Usage: python3 ProductionCode/basic_cl.py -calories 'food'\n" +
-              "Usage: python3 Production/basic_cl.py -diet 'food1' 'food2'")
+        print("usage method not found, please use one of the usage method below: \n"
+           "Usage: python3 ProductionCode/basic_cl.py -calories 'food'\n"
+           "Usage: python3 ProductionCode/basic_cl.py -diet 'food1' 'food2'")
 
 if __name__ == "__main__":
     main()

@@ -17,8 +17,16 @@ class Test_get_calories_by_name(unittest.TestCase):
     
     def test_get_calories_by_name_wrongfood(self):
         """Check if get_calories_by_name() output warning for invalid food item."""
-        calories=get_calories_by_name('Charlie')
-        self.assertEqual(calories,'Sorry, the item you are searching for is not in the menu of Chick-fil-A.')
+        food = "Charlie"
+        file_path = 'ProductionCode/basic_cl.py' #path to the production code
+        code = subprocess.Popen(['python3', file_path,'-calories', food], 
+                                stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+                                encoding='utf8') 
+        output, err = code.communicate()
+        self.assertEqual(output.strip(), 'Sorry, the item you are searching for is not in the menu of Chick-fil-A.') 
+        code.terminate()
+
+
         
     def test_get_calories_by_name_commandcorrect(self):
         """Check if basic_cl.py works for valid 'calories' command line arguments."""
@@ -27,7 +35,7 @@ class Test_get_calories_by_name(unittest.TestCase):
                                 stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                                 encoding='utf8') 
         output, err = code.communicate()
-        self.assertIn(output.strip(), '0') 
+        self.assertEqual(output.strip(), '0') 
         code.terminate()
     
     def test_get_calories_by_name_commanderror(self):
@@ -37,18 +45,20 @@ class Test_get_calories_by_name(unittest.TestCase):
                                 stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                                 encoding='utf8') 
         output, err = code.communicate()
-        self.assertIn(output.strip(), "Usage: python3 ProductionCode/basic_cl.py -calories 'food'")
+        self.assertEqual(output.strip(), "Usage: python3 ProductionCode/basic_cl.py -calories 'food'")
         code.terminate()
     
     def test_commanderror(self):
         """Check if basic_cl.py works for invalid command line arguments"""
         file_path = 'ProductionCode/basic_cl.py' #path to the production code
+        expected = ("usage method not found, please use one of the usage method below: \n"
+           "Usage: python3 ProductionCode/basic_cl.py -calories 'food'\n"
+           "Usage: python3 ProductionCode/basic_cl.py -diet 'food1' 'food2'")
         code = subprocess.Popen(['python3', file_path, '-Charlie'], 
                                 stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                                 encoding='utf8') 
         output, err = code.communicate()
-        self.assertIn(output.strip(), "Usage:\n get food calories: python3 ProductionCode/basic_cl.py -calories 'food'"
-                      " \n get food allergies: python3 ____.py -diet 'food1' 'food2'")
+        self.assertEqual(output.strip(), expected)
         code.terminate()
 
 
