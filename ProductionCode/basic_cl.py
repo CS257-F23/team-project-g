@@ -170,20 +170,14 @@ def get_restriction(input):
 def main():
     original_data = load_data()
     
-    # if sys.argv[1] == "-calories":
-    #     if sys.argv.length() != 3:
-    #         raise ValueError("Usage: python3 ProductionCode/basic_cl.py -calories 'food'")
-    #     get_calories_by_name(sys.argv[2], original_data)
-    # hank: commented above to test get_restr
+    if sys.argv[1] == "-calories":
+        if len(sys.argv) != 3:
+            print("Usage: python3 ProductionCode/basic_cl.py -calories 'food'")
+            return
+        get_calories_by_name(sys.argv[2])
 
     test = load_data_subset()
 
-    
-    # if sys.argv[1] == "-diet":
-    #     get_restrictions()
-    data = load_data_subset()
-    # print(get_restriction(["Crispy Bell Peppers", "Garden Herb Ranch Dressing"]))
-    print(get_restriction(["Crispy Bell Peppers"]))
     
     # if sys.argv[1] == "-diet":
     #     get_restrictions()
