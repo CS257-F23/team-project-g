@@ -23,21 +23,7 @@ class Test_get_restriction(unittest.TestCase):
         expected = ["Dairy","Egg", "Wheat", "Tree Nuts"]
         self.assertCountEqual(get_restriction(food),expected)
 
-    
-    def test_get_restriction_main_basic(self):
-        """Check if basic_cl.py works for an argument of empty list"""
-        option = "-diet"
-        food = []
-        expected = "Usage : python3 Production/basic_cl.py -diet 'food1' 'food2'"
-        file_path = 'ProductionCode/basic_cl.py' #path to the production code
-        code = subprocess.Popen(['python3', file_path, option, food], 
-                                stdin=subprocess.PIPE, stdout=subprocess.PIPE,
-                                encoding='utf8') 
-        output, err = code.communicate() 
-        self.assertEqual(output.strip(), expected) 
-        code.terminate() 
-    
-    def test_get_restriction_main_basic(self):
+    def test_get_restriction_main_invalid_food(self):
         """Check if basic_cl.py works for an argument of list containing a food item that does not exists in datasets"""
         option = "-diet"
         food = ["Silly"]
@@ -64,7 +50,7 @@ class Test_get_restriction(unittest.TestCase):
         self.assertEqual(output.strip(), expected) 
         code.terminate() 
 
-    def test_get_restriction_main_basic(self):
+    def test_get_restriction_main_invalid(self):
         """Check if basic_cl.py works for invalid command line arguments"""
         option = "-diet"
         expected = "Usage : python3 Production/basic_cl.py -diet 'food1' 'food2'"
