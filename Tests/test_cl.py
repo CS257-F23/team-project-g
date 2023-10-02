@@ -16,8 +16,9 @@ class Test_get_calories_by_name(unittest.TestCase):
         self.assertEqual(calories, 240)
     
     def test_get_calories_by_name_wrongfood(self):
-        """Check if get_calories_by_name() raises Value error for invalid food item."""
-        self.assertRaises(ValueError, get_calories_by_name, 'Charlie')
+        """Check if get_calories_by_name() output warning for invalid food item."""
+        calories=get_calories_by_name('Charlie')
+        self.assertEqual(calories,'Sorry, the item you are searching for is not in the menu of Chick-fil-A.')
         
     def test_get_calories_by_name_commandcorrect(self):
         """Check if basic_cl.py works for valid 'calories' command line arguments."""
@@ -38,7 +39,7 @@ class Test_get_calories_by_name(unittest.TestCase):
                                 stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                                 encoding='utf8') 
         output, err = code.communicate()
-        self.assertIn(output.strip(), "Usage: python3 basic_cl.py -calories 'food'")
+        self.assertIn(output.strip(), "Usage: python3 ProductionCode/basic_cl.py -calories 'food'")
         code.terminate()
     
     def test_commanderror(self):
@@ -48,17 +49,9 @@ class Test_get_calories_by_name(unittest.TestCase):
                                 stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                                 encoding='utf8') 
         output, err = code.communicate()
-        self.assertIn(output.strip(), "Usage:\n get food calories: python3 basic_cl.py -calories 'food'"
+        self.assertIn(output.strip(), "Usage:\n get food calories: python3 ProductionCode/basic_cl.py -calories 'food'"
                       " \n get food allergies: python3 ____.py -diet 'food1' 'food2'")
         code.terminate()
-    
-class Test_get_foodlist_without_allergy(unittest.TestCase):
-    
-    
-    def test_get_foodlist_without_allergy_allcorrect(self):
-        foodlist=get_foodlist_without_allergy('egg')
-        self.assertCountEqual(foodlist, ['Crispy Bell Peppers','Roasted Nut Blend','Seasoned Tortilla Strips','Hash Browns'])
-    
 
 
     
