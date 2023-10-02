@@ -1,10 +1,10 @@
 import subprocess
 import unittest
-#from ProductionCode import *
+from ProductionCode.basic_cl import *
 
 class Test_get_restriction(unittest.TestCase):
     #testing get_cell (basic test)
-    load_subset_data()
+    load_data_subset()
     def test_get_restriction_one_food(self):
         """Check if get_restriction() works for a list with one valid food item"""
         food = ["Crispy Bell Peppers"]
@@ -29,7 +29,7 @@ class Test_get_restriction(unittest.TestCase):
         self.assertRaises(ValueError, get_restriction, food)
     
     def test_get_restriction_wrong_food_name(self):
-        """Check if get_restriction() raises ValueError for an argument of list containing a food item that does not exists in dataset"""
+        """Check if get_restriction() raises ValueError for an argument of list containing a food item that does not exists in datasets"""
         food = ["Silly"]
         self.assertRaises(ValueError, get_restriction, food)
     

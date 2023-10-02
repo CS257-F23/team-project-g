@@ -1,10 +1,10 @@
 import sys
 import csv
-
+data = []
 def load_data():
-    data = []
+    global data
 
-    file = open("C:/Users/22382/team-project-g/Data/CFAfacts.csv", encoding="utf-8")   
+    file = open("Data/CFAfacts.csv", encoding="utf-8")   
 
     for line in file:
         line = line.strip()
@@ -56,9 +56,9 @@ def load_data():
 
 
 def load_data_subset():
-    data = []
+    global data
 
-    file = open("CFAfact_subset.csv", encoding="utf-8")   
+    file = open("Data/CFAfact_subset.csv", encoding="utf-8")   
 
     for line in file:
         line = line.strip()
@@ -111,37 +111,41 @@ def load_data_subset():
 
 
 
-def get_calories_by_name(value, dataset):
+def get_calories_by_name(value):
+    global data
     target_value = value.lower()
     target_row = 0
-    for row in range(len(dataset)):
-        if dataset[row]["Item"].lower() == target_value:
+    for row in range(len(data)):
+        if data[row]["Item"].lower() == target_value:
             target_row = row
-    print(dataset[target_row]["Calories"])
+    print(data[target_row]["Calories"])
 
     if target_row == 0:
         raise ValueError("Sorry, the item you are searching is not in the menu of Chick-fil-A.")
 
-def get_row_index(input, dataset):
+def get_row_index(input):
+    global data
     index = []
-    for row in range(len(dataset)):
-        if dataset[row]["Item"] in input:
+    for row in range(len(data)):
+        if data[row]["Item"] in input:
             index.append(row)
     return index
 
-def get_sum(index, dataset, allergies):
+def get_sum(index, allergies):
+    global data
     sum = 0
     for row in index:
-        if dataset[row][allergies] == 1:
+        if data[row][allergies] == 1:
             sum += 1
     return sum
 
-def get_restriction(input, dataset):
-    input_index = get_row_index(input, dataset)
+def get_restriction(input):
+    global data
+    input_index = get_row_index(input)
     lst = ["Dairy","Egg","Soy","Wheat","Tree Nuts","Fish"]
     result = []
     for allergy_items in lst:
-        this_sum = get_sum(input_index, dataset, allergy_items)
+        this_sum = get_sum(input_index, allergy_items)
         result.append(this_sum)
     
     output = []
