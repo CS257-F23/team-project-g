@@ -5,15 +5,15 @@ from ProductionCode.basic_cl import *
 class Test_get_calories_by_name(unittest.TestCase):
 
     
-    def test_get_calories_by_name_allcorrect(self):
+    def test_get_calories_by_name_allcorrect1(self):
         """Check if get_calories_by_name works for valid food item."""
-        calories=get_calories_by_name('Hotcakes')
-        self.assertEqual(calories, 350)
+        calories=get_calories_by_name('Coffee')
+        self.assertEqual(calories, 0)
     
     def test_get_calories_by_name_capitalerror(self):
         """Check if get_calories_by_name() works for valid food item with wrong capitalizaton."""
-        calories=get_calories_by_name('HAmhurger')
-        self.assertEqual(calories, 240)
+        calories=get_calories_by_name('PEAch Milkshake')
+        self.assertEqual(calories, 590)
     
     def test_get_calories_by_name_wrongfood(self):
         """Check if get_calories_by_name() output warning for invalid food item."""
@@ -23,12 +23,12 @@ class Test_get_calories_by_name(unittest.TestCase):
     def test_get_calories_by_name_commandcorrect(self):
         """Check if basic_cl.py works for valid 'calories' command line arguments."""
         file_path = 'ProductionCode/basic_cl.py' #path to the production code
-        food="'Egg McMuffin'"
+        food="'1% Milk'"
         code = subprocess.Popen(['python3', file_path,'-calories', food], 
                                 stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                                 encoding='utf8') 
         output, err = code.communicate()
-        expected=300
+        expected=90
         self.assertEqual(output.strip(), expected) 
         code.terminate()
     
