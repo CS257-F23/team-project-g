@@ -3,6 +3,9 @@ import csv
 data = []
 
 def load_data():
+    '''Arguments: None
+Return value: the whole data set, in the format of a dictionary
+Purpose: load data for future function use'''
     global data
 
     file = open("Data/CFAfacts.csv", encoding="utf-8")   
@@ -59,6 +62,9 @@ def load_data():
 
 
 def load_data_subset():
+    '''Arguments: None
+Return value: the chose subset of the whole data set, in the format of a dictionary
+Purpose: load data for test use'''
     global data
     
     file = open("Data/CFAfact_subset.csv", encoding="utf-8")   
@@ -142,6 +148,9 @@ Purpose: get calories of a specified food'''
     return data[target_row]["Calories"]
 
 def get_row_index(input):
+    '''Arguments: a list of food names
+Return value: a list of indices of corresponding columns
+Purpose: get row indices in the data set for a given food names'''
     global data
     index = []
     for item in input:
@@ -149,6 +158,9 @@ def get_row_index(input):
     return index
 
 def get_sum(index, allergies):
+    '''Arguments: a list of indices, and an string of a given allergy item
+Return value: an integer, marking whether food in the index list cotains the given allergies (0) or not
+Purpose: checking whether food in the index list cotains the given allergies (0) or not'''
     global data
     sum = 0
     for row in index:
@@ -157,6 +169,9 @@ def get_sum(index, allergies):
     return sum
 
 def get_restriction(input):
+    '''Arguments: a list of indices, and an string of a given allergy item
+Return value: an integer, marking whether food in the index list cotains the given allergies (0) or not
+Purpose: checking whether food in the index list cotains the given allergies (0) or not'''
     global data
     input_index = get_row_index(input)
     for index in input_index:
@@ -175,6 +190,10 @@ def get_restriction(input):
     return output
 
 def main():
+    '''Arguments: None
+Return value: None
+Purpose: Maintains command line interface, loads data. Usage statement: "Usage: python3 ProductionCode/basic_cl.py -method method_param". Returns relevant information as desired.
+'''
     load_data()
     if sys.argv[1] == "-calories":
         if len(sys.argv) != 3:
