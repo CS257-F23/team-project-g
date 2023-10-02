@@ -1,6 +1,7 @@
 import sys
 import csv
 data = []
+
 def load_data():
     global data
 
@@ -113,17 +114,27 @@ def load_data_subset():
     data.pop(0) # remove header
     return data
 
-def get_calories_by_name(value):
+def get_row(value):
     global data
     target_value = value.lower()
     target_row = 0
+    match = 0
     for row in range(len(data)):
         if data[row]["Item"].lower() == target_value:
+            match += 1
             target_row = row
-    print(data[target_row]["Calories"])
+            return target_row
+    if match == 0:
+        return -1
 
-    if target_row == 0:
+def get_calories_by_name(value):
+    global data
+    target_row = get_row(value)
+
+    if target_row == -1:
         print("Sorry, the item you are searching for is not in the menu of Chick-fil-A.")
+        return
+    return data[target_row]["Calories"]
 
 def get_row_index(input):
     global data
@@ -157,15 +168,15 @@ def get_restriction(input):
     return output
 
 def main():
-    # original_data = load_data()
+    original_data = load_data()
     
     # if sys.argv[1] == "-calories":
     #     if sys.argv.length() != 3:
-    #         raise ValueError("Usage: python3 basic_cl.py -calories 'food'")
+    #         raise ValueError("Usage: python3 ProductionCode/basic_cl.py -calories 'food'")
     #     get_calories_by_name(sys.argv[2], original_data)
     # hank: commented above to test get_restr
 
-    # test = load_data_subset()
+    test = load_data_subset()
 
     
     # if sys.argv[1] == "-diet":
