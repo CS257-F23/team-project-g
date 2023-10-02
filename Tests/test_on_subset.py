@@ -23,28 +23,40 @@ class Test_get_restriction(unittest.TestCase):
         expected = ["Dairy","Egg", "Wheat", "Tree Nuts"]
         self.assertCountEqual(get_restriction(food),expected)
 
-    def test_get_restriction_no_food(self):
-        """Check if get_restriction() raises ValueError for an argument of empty list"""
+    
+    def test_get_restriction_main_basic(self):
+        """Check if basic_cl.py works for an argument of empty list"""
+        option = "-diet"
         food = []
-        self.assertRaises(ValueError, get_restriction, food)
+        expected = "Usage : python3 Production/basic_cl.py -diet 'food1' 'food2'"
+        file_path = 'ProductionCode/basic_cl.py' #path to the production code
+        code = subprocess.Popen(['python3', file_path, option, food], 
+                                stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+                                encoding='utf8') 
+        output, err = code.communicate() 
+        self.assertEqual(output.strip(), expected) 
+        code.terminate() 
     
-    def test_get_restriction_wrong_food_name(self):
-        """Check if get_restriction() raises ValueError for an argument of list containing a food item that does not exists in datasets"""
+    def test_get_restriction_main_basic(self):
+        """Check if basic_cl.py works for an argument of list containing a food item that does not exists in datasets"""
+        option = "-diet"
         food = ["Silly"]
-        self.assertRaises(ValueError, get_restriction, food)
-    
-    def test_get_restriction_wrong_arg_type(self):
-        """Check if get_restriction() raises TypeError for an argument of string"""
-        food = "Crispy Bell Peppers"
-        self.assertRaises(TypeError, get_restriction, food)
+        expected = "Usage : python3 Production/basic_cl.py -diet 'food1' 'food2'"
+        file_path = 'ProductionCode/basic_cl.py' #path to the production code
+        code = subprocess.Popen(['python3', file_path, option, food], 
+                                stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+                                encoding='utf8') 
+        output, err = code.communicate() 
+        self.assertEqual(output.strip(), expected) 
+        code.terminate() 
 
     def test_get_restriction_main_basic(self):
-        """Check if ____.py works for valid command line arguments"""
+        """Check if basic_cl.py works for valid command line arguments"""
         food1 = "Crispy Bell Peppers"
         food2 = "Garden Herb Ranch Dressing"
         option = "-diet"
         expected = "['Dairy','Egg', 'Wheat']"
-        file_path = 'ProductionCode/____.py' #path to the production code
+        file_path = 'ProductionCode/basic_cl.py' #path to the production code
         code = subprocess.Popen(['python3', file_path, option, food1, food2], 
                                 stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                                 encoding='utf8') 
@@ -55,8 +67,8 @@ class Test_get_restriction(unittest.TestCase):
     def test_get_restriction_main_basic(self):
         """Check if basic_cl.py works for invalid command line arguments"""
         option = "-diet"
-        expected = "Usage : python3 ____.py -diet 'food1' 'food2'"
-        file_path = 'ProductionCode/____.py' #path to the production code
+        expected = "Usage : python3 Production/basic_cl.py -diet 'food1' 'food2'"
+        file_path = 'ProductionCode/basic_cl.py' #path to the production code
         code = subprocess.Popen(['python3', file_path, option], 
                                 stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                                 encoding='utf8') 
