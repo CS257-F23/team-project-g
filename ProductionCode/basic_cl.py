@@ -50,14 +50,14 @@ def load_data():
         }
 
         data.append(row)
-    
+
     data.pop(0) # remove header
     return data
 
 
 def load_data_subset():
     global data
-
+    
     file = open("Data/CFAfact_subset.csv", encoding="utf-8")   
 
     for line in file:
@@ -108,9 +108,6 @@ def load_data_subset():
     data.pop(0) # remove header
     return data
 
-
-
-
 def get_calories_by_name(value):
     global data
     target_value = value.lower()
@@ -121,7 +118,7 @@ def get_calories_by_name(value):
     print(data[target_row]["Calories"])
 
     if target_row == 0:
-        raise ValueError("Sorry, the item you are searching is not in the menu of Chick-fil-A.")
+        print("Sorry, the item you are searching for is not in the menu of Chick-fil-A.")
 
 def get_row_index(input):
     global data
@@ -147,7 +144,7 @@ def get_restriction(input):
     for allergy_items in lst:
         this_sum = get_sum(input_index, allergy_items)
         result.append(this_sum)
-    
+
     output = []
     for i in range(len(result)):
         if result[i] != 0:
@@ -155,12 +152,16 @@ def get_restriction(input):
     return output
 
 def main():
-    original_data = load_data()
+    # original_data = load_data()
     
-    if sys.argv[1] == "-calories":
-        if sys.argv.length() != 3:
-            raise ValueError("Usage: python3 basic_cl.py -calories 'food'")
-        get_calories_by_name(sys.argv[2], original_data)
+    # if sys.argv[1] == "-calories":
+    #     if sys.argv.length() != 3:
+    #         raise ValueError("Usage: python3 basic_cl.py -calories 'food'")
+    #     get_calories_by_name(sys.argv[2], original_data)
+    # hank: commented above to test get_restr
+
+    test = load_data_subset()
+
     
     # if sys.argv[1] == "-diet":
     #     get_restrictions()
