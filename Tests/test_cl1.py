@@ -3,6 +3,10 @@ import unittest
 from ProductionCode.basic_cl import *
 
 class Test_get_calories_by_name(unittest.TestCase):
+
+    usage_calories = ("Usage : python3 Production/basic_cl.py -calories 'food'\n"
+            "Note: only one food option is required after '-calories', food name of multiple words shoule be put in quotes")
+    
     def test_get_calories_by_name_allcorrect1(self):
         """Purpose: Check if get_calories_by_name works for valid food item."""
         calories=get_calories_by_name('Coffee')
@@ -41,15 +45,15 @@ class Test_get_calories_by_name(unittest.TestCase):
                                 stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                                 encoding='utf8') 
         output, err = code.communicate()
-        self.assertEqual(output.strip(), "Usage: python3 ProductionCode/basic_cl.py -calories 'food'")
+        self.assertEqual(output.strip(), usage_calories)
         code.terminate()
     
     def test_commanderror(self):
         """Purpose: Check if basic_cl.py works for invalid command line arguments"""
         file_path = 'ProductionCode/basic_cl.py' #path to the production code
-        expected = ("usage method not found, please use one of the usage method below: \n"
-           "Usage: python3 ProductionCode/basic_cl.py -calories 'food'\n"
-           +usage_diet)
+        expected = ("usage method not found, please use one of the usage method below: \n" 
+                    + usage_calories + "\n" 
+                    + usage_diet)
         code = subprocess.Popen(['python3', file_path, '-Charlie'], 
                                 stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                                 encoding='utf8') 

@@ -2,7 +2,7 @@ import sys
 import csv
 data = []
 usage_calories = ("Usage : python3 Production/basic_cl.py -calories 'food'\n"
-            "Note: only one food option is required after '-calories', food name of multiple words shoule be put in quotes\n")
+            "Note: only one food option is required after '-calories', food name of multiple words shoule be put in quotes")
 usage_diet = ("Usage : python3 Production/basic_cl.py -diet 'food1' ['food2' ... ]\n"
             "Note: at least one food option is required after '-diet', multiple food items are valid as well")
 
@@ -163,7 +163,7 @@ def msg():
     '''Arguments: none
     Return value: the usage message shown to users
     Purpose: helper function for main() to print usage message out'''
-    return "usage method not found, please use one of the usage method below: \n" + usage_calories + usage_diet
+    return "usage method not found, please use one of the usage method below: \n" + usage_calories + "\n" + usage_diet
 
 def check_sysArgv(position, argument):
     '''Arguments: the position of the command line input we want to check, and an expected argument
