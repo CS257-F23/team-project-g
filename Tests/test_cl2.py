@@ -7,7 +7,7 @@ from ProductionCode.basic_cl import *
 class Test_get_restriction(unittest.TestCase):
     #testing get_cell (basic test)
     
-    load_data_subset()
+    load_data()
     def test_get_restriction_one_food(self):
         """Purpose: Check if get_restriction() works for a list with one valid food item"""
         food = ["Crispy Bell Peppers"]
@@ -42,7 +42,7 @@ class Test_get_restriction(unittest.TestCase):
         self.assertEqual(output.strip(), expected) 
         code.terminate() 
 
-    usage_diet = ("Usage : python3 Production/basic_cl.py -diet 'food1' ['food2' ... ]"
+    usage_diet = ("Usage : python3 Production/basic_cl.py -diet 'food1' ['food2' ... ]\n"
             "Note: at least one food option is required after '-diet', multiple food items are valid as well")
     
     def test_get_restriction_main_invalid_food(self):

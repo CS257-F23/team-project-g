@@ -1,7 +1,7 @@
 import sys
 import csv
 data = []
-usage_diet = ("Usage : python3 Production/basic_cl.py -diet 'food1' ['food2' ... ]"
+usage_diet = ("Usage : python3 Production/basic_cl.py -diet 'food1' ['food2' ... ]\n"
             "Note: at least one food option is required after '-diet', multiple food items are valid as well")
 
 def load_data():
@@ -178,7 +178,7 @@ Purpose: checking whether food in the index list cotains the given allergies (0)
     input_index = get_row_index(input)
     for index in input_index:
         if index == -1:
-            return 
+            return usage_diet
     lst = ["Dairy","Egg","Soy","Wheat","Tree Nuts","Fish"]
     result = []
     for allergy_items in lst:

@@ -53,7 +53,7 @@ class Test_get_calories_by_name(unittest.TestCase):
         file_path = 'ProductionCode/basic_cl.py' #path to the production code
         expected = ("usage method not found, please use one of the usage method below: \n"
            "Usage: python3 ProductionCode/basic_cl.py -calories 'food'\n"
-           "Usage: python3 ProductionCode/basic_cl.py -diet 'food1' 'food2'")
+           +usage_diet)
         code = subprocess.Popen(['python3', file_path, '-Charlie'], 
                                 stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                                 encoding='utf8') 
