@@ -1,15 +1,15 @@
 import sys
 import csv
 data = []
-usage_calories = ("Usage : python3 Production/basic_cl.py -calories 'food'"
-            "Note: only one food option is required after '-calories', food name of multiple words shoule be put in quotes")
-usage_diet = ("Usage : python3 Production/basic_cl.py -diet 'food1' ['food2' ... ]"
+usage_calories = ("Usage : python3 Production/basic_cl.py -calories 'food'\n"
+            "Note: only one food option is required after '-calories', food name of multiple words shoule be put in quotes\n")
+usage_diet = ("Usage : python3 Production/basic_cl.py -diet 'food1' ['food2' ... ]\n"
             "Note: at least one food option is required after '-diet', multiple food items are valid as well")
 
 def load_data():
     '''Arguments: None
-Return value: the whole data set, in the format of a dictionary
-Purpose: load data for future function use'''
+    Return value: the whole data set, in the format of a dictionary
+    Purpose: load data for future function use'''
     global data
 
     file = open("Data/CFAfacts.csv", encoding="utf-8")
@@ -53,8 +53,8 @@ def get_value(row, column):
 
 def get_row(food_name):
     '''Arguments: name of the food(string)
-Return value: the row that the food value is in
-Purpose: get the row of a specified food'''
+    Return value: the row that the food value is in
+    Purpose: get the row of a specified food'''
     global data
     target_food = food_name.lower()
     target_row = 0
@@ -69,8 +69,8 @@ Purpose: get the row of a specified food'''
 
 def get_calories_by_name(food_name):
     '''Arguments: name of the food(string)
-Return value: the calories column of the row that the food is in, or if it is not in the list, return a message
-Purpose: get calories of a specified food'''
+    Return value: the calories column of the row that the food is in, or if it is not in the list, return a message
+    Purpose: get calories of a specified food'''
     global data
     target_row = get_row(food_name)
 
@@ -80,8 +80,8 @@ Purpose: get calories of a specified food'''
 
 def get_row_index(food_names):
     '''Arguments: a list of food names
-Return value: a list of indices of corresponding columns
-Purpose: get row indices in the data set for a given food names'''
+    Return value: a list of indices of corresponding columns
+    Purpose: get row indices in the data set for a given food names'''
     global data
     row_index = []
     for item in food_names:
@@ -186,8 +186,8 @@ def print_msg(command_line):
 
 def main():
     '''Arguments: None
-Return value: None
-Purpose: Maintains command line interface, loads data. Usage statement: "Usage: python3 ProductionCode/basic_cl.py -method method_param". Returns relevant information as desired.'''
+    Return value: None
+    Purpose: Maintains command line interface, loads data. Usage statement: "Usage: python3 ProductionCode/basic_cl.py -method method_param". Returns relevant information as desired.'''
     load_data()
     print(print_msg(sys.argv))
 
