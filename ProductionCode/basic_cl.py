@@ -1,6 +1,8 @@
 import sys
 import csv
 data = []
+usage_diet = ("Usage : python3 Production/basic_cl.py -diet 'food1' ['food2' ... ]"
+            "Note: at least one food option is required after '-diet', multiple food items are valid as well")
 
 def load_data():
     '''Arguments: None
@@ -176,7 +178,7 @@ Purpose: checking whether food in the index list cotains the given allergies (0)
     input_index = get_row_index(input)
     for index in input_index:
         if index == -1:
-            return "Usage : python3 Production/basic_cl.py -diet 'food1' 'food2'"
+            return 
     lst = ["Dairy","Egg","Soy","Wheat","Tree Nuts","Fish"]
     result = []
     for allergy_items in lst:
@@ -203,13 +205,13 @@ Purpose: Maintains command line interface, loads data. Usage statement: "Usage: 
     
     elif sys.argv[1] == "-diet":
         if len(sys.argv) <= 2:
-            print("Usage : python3 Production/basic_cl.py -diet 'food1' 'food2'")
+            print(usage_diet)
         else:
             print(get_restriction(sys.argv[2:]))
     else:
         print("usage method not found, please use one of the usage method below: \n"
            "Usage: python3 ProductionCode/basic_cl.py -calories 'food'\n"
-           "Usage: python3 ProductionCode/basic_cl.py -diet 'food1' 'food2'")
+           + usage_diet)
 
 if __name__ == "__main__":
     main()

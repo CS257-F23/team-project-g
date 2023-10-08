@@ -2,8 +2,11 @@ import subprocess
 import unittest
 from ProductionCode.basic_cl import *
 
+
+
 class Test_get_restriction(unittest.TestCase):
     #testing get_cell (basic test)
+    
     load_data_subset()
     def test_get_restriction_one_food(self):
         """Purpose: Check if get_restriction() works for a list with one valid food item"""
@@ -23,18 +26,7 @@ class Test_get_restriction(unittest.TestCase):
         expected = ["Dairy", "Egg", "Wheat", "Tree Nuts"]
         self.assertCountEqual(get_restriction(food),expected)
 
-    def test_get_restriction_main_invalid_food(self):
-        """Purpose: Check if basic_cl.py works for an argument of list containing a food item that does not exists in datasets"""
-        option = "-diet"
-        food = "Silly"
-        expected = "Usage : python3 Production/basic_cl.py -diet 'food1' 'food2'"
-        file_path = 'ProductionCode/basic_cl.py' #path to the production code
-        code = subprocess.Popen(['python3', file_path, option, food], 
-                                stdin=subprocess.PIPE, stdout=subprocess.PIPE,
-                                encoding='utf8') 
-        output, err = code.communicate() 
-        self.assertEqual(output.strip(), expected) 
-        code.terminate() 
+
 
     def test_get_restriction_main_basic(self):
         """Purpose: Check if basic_cl.py works for valid command line arguments"""
@@ -50,10 +42,26 @@ class Test_get_restriction(unittest.TestCase):
         self.assertEqual(output.strip(), expected) 
         code.terminate() 
 
+    usage_diet = ("Usage : python3 Production/basic_cl.py -diet 'food1' ['food2' ... ]"
+            "Note: at least one food option is required after '-diet', multiple food items are valid as well")
+    
+    def test_get_restriction_main_invalid_food(self):
+        """Purpose: Check if basic_cl.py works for an argument of list containing a food item that does not exists in datasets"""
+        option = "-diet"
+        food = "Silly"
+        expected = usage_diet
+        file_path = 'ProductionCode/basic_cl.py' #path to the production code
+        code = subprocess.Popen(['python3', file_path, option, food], 
+                                stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+                                encoding='utf8') 
+        output, err = code.communicate() 
+        self.assertEqual(output.strip(), expected) 
+        code.terminate() 
+
     def test_get_restriction_main_invalid(self):
         """Purpose: Check if basic_cl.py works for invalid command line arguments"""
         option = "-diet"
-        expected = "Usage : python3 Production/basic_cl.py -diet 'food1' 'food2'"
+        expected = usage_diet
         file_path = 'ProductionCode/basic_cl.py' #path to the production code
         code = subprocess.Popen(['python3', file_path, option], 
                                 stdin=subprocess.PIPE, stdout=subprocess.PIPE,
