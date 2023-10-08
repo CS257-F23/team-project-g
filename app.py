@@ -5,13 +5,20 @@ app = Flask(__name__)
 
 data = []
 
-def message_by_result(result, food):
+def calories_message(result, food):
      '''process and return a corresponding message based on the result(found/not found)'''
      if (result == "Sorry, the item you are searching for is not in the menu of Chick-fil-A."):
           return result
      else:
           msg_pt1 = "Calorie count of "
           return msg_pt1 + food + " is " + str(result) + "."
+
+def diet_message(result):
+     if (result == "Sorry, the item you are searching for is not in the menu of Chick-fil-A."):
+          return result
+     else:
+          msg_pt1 = "Your food includes "
+          return msg_pt1 + str(result) + ". Pay attention!"
 
 @app.route('/')
 def homepage():
@@ -29,8 +36,26 @@ def get_calorie(food = ""):
      '''display the calorie count of the food item, if food item not found, then display a message'''
      load_data() #load data
      result = get_calories_by_name(food)
-     message = message_by_result(result, food)  #process the message based on result
+     message = calories_message(result, food)  #process the message based on result
      return render_template("calorie.html", message = message) 
+
+
+
+
+
+
+@app.route('/diet/<food>', strict_slashes=False)
+def get_calorie(food = ""):
+     load_data()
+     result = get_restriction(food)
+     message = diet_message(result)  #process the message based on result
+     return render_template("diet.html", message = message) 
+
+
+
+
+
+
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -41,6 +66,8 @@ def page_not_found(e):
 def python_bug(e):
      '''error handling for 500 error'''
      return "Internal Server Error"
+
+
 
 if __name__ == '__main__':
     app.run()
