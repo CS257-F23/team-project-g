@@ -6,8 +6,8 @@ usage_diet = ("Usage : python3 Production/basic_cl.py -diet 'food1' ['food2' ...
 
 def load_data():
     '''Arguments: None
-Return value: the whole data set, in the format of a dictionary
-Purpose: load data for future function use'''
+    Return value: the whole data set, in the format of a dictionary
+    Purpose: load data for future function use'''
     global data
 
     file = open("Data/CFAfacts.csv", encoding="utf-8")   
@@ -65,8 +65,8 @@ Purpose: load data for future function use'''
 
 def load_data_subset():
     '''Arguments: None
-Return value: the chose subset of the whole data set, in the format of a dictionary
-Purpose: load data for test use'''
+    Return value: the chose subset of the whole data set, in the format of a dictionary
+    Purpose: load data for test use'''
     global data
     
     file = open("Data/CFAfact_subset.csv", encoding="utf-8")   
@@ -124,8 +124,8 @@ Purpose: load data for test use'''
 
 def get_row(value):
     '''Arguments: value(string)
-Return value: the row that the food value is in
-Purpose: get the row of a specified food'''
+    Return value: the row that the food value is in
+    Purpose: get the row of a specified food'''
     global data
     target_value = value.lower()
     target_row = 0
@@ -140,8 +140,8 @@ Purpose: get the row of a specified food'''
 
 def get_calories_by_name(value):
     '''Arguments: value(string)
-Return value: the calories column of the row that the food is in, or if it is not in the list, return a message
-Purpose: get calories of a specified food'''
+    Return value: the calories column of the row that the food is in, or if it is not in the list, return a message
+    Purpose: get calories of a specified food'''
     global data
     target_row = get_row(value)
 
@@ -151,8 +151,8 @@ Purpose: get calories of a specified food'''
 
 def get_row_index(input):
     '''Arguments: a list of food names
-Return value: a list of indices of corresponding columns
-Purpose: get row indices in the data set for a given food names'''
+    Return value: a list of indices of corresponding columns
+    Purpose: get row indices in the data set for a given food names'''
     global data
     index = []
     for item in input:
@@ -161,8 +161,8 @@ Purpose: get row indices in the data set for a given food names'''
 
 def get_sum(index, allergies):
     '''Arguments: a list of indices, and an string of a given allergy item
-Return value: an integer, marking whether food in the index list cotains the given allergies (0) or not
-Purpose: checking whether food in the index list cotains the given allergies (0) or not'''
+    Return value: an integer, marking whether food in the index list cotains the given allergies (0) or not
+    Purpose: checking whether food in the index list cotains the given allergies (0) or not'''
     global data
     sum = 0
     for row in index:
@@ -172,8 +172,8 @@ Purpose: checking whether food in the index list cotains the given allergies (0)
 
 def get_restriction(input):
     '''Arguments: a list of indices, and an string of a given allergy item
-Return value: an integer, marking whether food in the index list cotains the given allergies (0) or not
-Purpose: checking whether food in the index list cotains the given allergies (0) or not'''
+    Return value: an integer, marking whether food in the index list cotains the given allergies (0) or not
+    Purpose: checking whether food in the index list cotains the given allergies (0) or not'''
     global data
     input_index = get_row_index(input)
     for index in input_index:
@@ -193,9 +193,8 @@ Purpose: checking whether food in the index list cotains the given allergies (0)
 
 def main():
     '''Arguments: None
-Return value: None
-Purpose: Maintains command line interface, loads data. Usage statement: "Usage: python3 ProductionCode/basic_cl.py -method method_param". Returns relevant information as desired.
-'''
+    Return value: None
+    Purpose: Maintains command line interface, loads data. Usage statement: "Usage: python3 ProductionCode/basic_cl.py -method method_param". Returns relevant information as desired.'''
     load_data()
     if sys.argv[1] == "-calories":
         if len(sys.argv) != 3:
