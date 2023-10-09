@@ -7,8 +7,8 @@ class Test_flask_html(unittest.TestCase):
         self.app = app.test_client()
         route = '/'
         response = self.app.get(route, follow_redirects=True)
-        expected_pt1 = "/calorie/food"
-        expected_pt2 = "To get calories by food name"
+        expected_pt1 = "To get calories by food name: access http://XXX.X.X.X:YYYY/calorie/food"
+        expected_pt2 = "To get restrictions by food name: access http://XXX.X.X.X:YYYY/diet/food"
         self.assertIn(expected_pt1, response.data.decode('utf-8'))
         self.assertIn(expected_pt2, response.data.decode('utf-8'))
 
@@ -84,3 +84,6 @@ class Test_flask_html(unittest.TestCase):
         result = "Sorry, the item you are searching for is not in the menu of Chick-fil-A."
         expected = "Sorry, the item you are searching for is not in the menu of Chick-fil-A."
         self.assertEqual(diet_message(result), expected)
+    
+    if __name__=="__main__":
+        unittest.main()
