@@ -34,11 +34,13 @@ class Test_flask_html(unittest.TestCase):
 
     #edge case
     def test_calorie_invalid(self): #test for 404 error
-        '''check if app.py works for invalid (non-existing) route'''
+        '''check if app.py works for invalid (non-existing) route, 404 page'''
+        self.maxDiff = None
         self.app = app.test_client()
         route = '/calories/Hash Browns'
         response = self.app.get(route, follow_redirects=True)
-        self.assertEqual("sorry, wrong format, refer to the homepage for more info", response.data.decode('utf-8'))
+        expectecd = "Oops, the page you were looking for doesn&#39;t exist, please refer to homepage or go to one of the pages below:"
+        self.assertIn(expectecd, response.data.decode('utf-8'))
 
     #base case
     def test_calorie_message_not_found(self):
