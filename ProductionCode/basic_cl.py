@@ -148,7 +148,8 @@ def msg_calories(argument):
     if len(argument) != 3:
         return usage_calories
     else:
-        return get_calories_by_name(sys.argv[2])
+        msg = get_calories_by_name(argument[2])
+        return msg
     
 def msg_diet(argument):
     '''Arguments: a list of command line arguments for diet function
@@ -157,7 +158,8 @@ def msg_diet(argument):
     if len(argument) <= 2:
         return usage_diet
     else:
-        return get_restriction(sys.argv[2:])
+        msg = get_restriction(argument[2:])
+        return msg
     
 def msg():
     '''Arguments: none
