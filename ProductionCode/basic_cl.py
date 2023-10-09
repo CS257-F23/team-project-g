@@ -53,8 +53,8 @@ def get_value(row, column):
 
 def get_row(food_name):
     '''Arguments: name of the food(string)
-    Return value: the row that the food value is in
-    Purpose: get the row of a specified food'''
+    Return value: the row number that the food value is in
+    Purpose: get the row number of a specified food'''
     global data
     target_food = food_name.lower()
     target_row = 0
@@ -89,21 +89,21 @@ def get_row_index(food_names):
     return row_index
 
 def get_sum(index, allergies):
-    '''Arguments: a list of indices, and an string of a given allergy item
+    '''Arguments: a list of indices, and a string of a given allergy item
     Return value: an integer, marking whether food in the index list cotains the given allergies (0) or not
     Purpose: checking whether food in the index list cotains the given allergies (0) or not'''
     global data
     sum = 0
     for row in index:
-        if data[row][allergies] == "1":
+        if get_value(row, allergies) == "1":
             sum = sum + 1
     return sum
 
-def check_list_invalidity(food_index):
-    '''Arguments: a list of food
+def check_list_invalidity(food_indices):
+    '''Arguments: a list of food indices
     Return value: -1 if any of the food in the list is not found in the dataset
     Purpose: checking whether foods are in the dataset'''
-    for index in food_index:
+    for index in food_indices:
         if index == -1:
             return True
 
@@ -135,7 +135,7 @@ def get_restriction(food_list):
     global data
     food_index = get_row_index(food_list)
     if check_list_invalidity(food_index):
-        return usage_diet
+        return "Sorry, the item you are searching for is not in the menu of Chick-fil-A."
     allergy_lst = ["Dairy","Egg","Soy","Wheat","Tree Nuts","Fish"]
     sum_list = get_allergy_sums(food_index, allergy_lst)
 

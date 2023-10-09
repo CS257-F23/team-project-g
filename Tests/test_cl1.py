@@ -7,6 +7,21 @@ class Test_get_calories_by_name(unittest.TestCase):
     usage_calories = ("Usage : python3 Production/basic_cl.py -calories 'food'\n"
             "Note: only one food option is required after '-calories', food name of multiple words shoule be put in quotes")
     
+    def test_get_value_normal(self):
+        """Purpose: Check if get_value works for valid row/column input"""
+        value = get_value(2, "Size")
+        self.assertEqual(value, '59g')
+
+    def test_get_row_normal(self):
+        """Purpose: Check if get_row works for valid food"""
+        row = get_row("Barbeque Sauce")
+        self.assertEqual(row, 3)
+
+    def test_get_row_invalid(self):
+        """Purpose: Check if get_row works for invalid food"""
+        row = get_row("Charlie")
+        self.assertEqual(row, -1)
+    
     def test_get_calories_by_name_allcorrect1(self):
         """Purpose: Check if get_calories_by_name works for valid food item."""
         calories=get_calories_by_name('Coffee')
@@ -62,6 +77,44 @@ class Test_get_calories_by_name(unittest.TestCase):
         code.terminate()
 
 class Test_get_restriction(unittest.TestCase):
+    def test_get_row_index_normal(self):
+        """Purpose: Check if get_row_index works for valid food list"""
+        fd_list = ["Chocolate Milkshake", "Strawberry Milkshake"]
+        index = get_row_index(fd_list)
+        expected = [17, 18]
+        self.assertEqual(index, expected)
+
+    def test_get_row_index_invalid(self):
+        """Purpose: Check if get_row_index works for food list containing food not in original data"""
+        fd_list = ["Chocolate Milkshake", "Strawberry Milkshake", "Charlie"]
+        index = get_row_index(fd_list)
+        expected = [17, 18, -1]
+        self.assertEqual(index, expected)
+
+    def test_get_sum_normal(self):
+        """Purpose: Check if get_sum works for valid index list and allergy"""
+        index_lst = [12, 25, 38]
+        allergy = "Fish"
+        self.assertEqual(get_sum(index_lst, allergy), 0)
+
+    def test_check_list_invalidity_normal(self):
+        """Purpose: Check if check_list_invalidity works for valid index list"""
+        food_index = [12, 25, 38]
+        self.assertEqual(check_list_invalidity(food_index), None)
+
+    def test_check_list_invalidity_invalid(self):
+        """Purpose: Check if check_list_invalidity works for invalid index list"""
+        food_index = [12, 25, -1]
+        self.assertEqual(check_list_invalidity(food_index), True)
+    
+    def test_get_allergy_sums_normal(self):
+        """Purpose: Check if get_allergy_sums works for valid index list and allergy list"""
+        food_index = [12, 25, 38]
+        allergy_lst = ["Dairy",	"Egg", "Soy"]
+        self.assertEqual(get_allergy_sums(food_index, allergy_lst), [1,0,0])
+        
+    # no edge?
+
     def test_get_restriction_one_food(self):
         """Purpose: Check if get_restriction() works for a list with one valid food item"""
         food = ["Crispy Bell Peppers"]
@@ -79,8 +132,6 @@ class Test_get_restriction(unittest.TestCase):
         food = ["Crispy Bell Peppers", "Garden Herb Ranch Dressing","Roasted Nut Blend", "5 Ct Nuggets Kid's Meal", "Tomato"]
         expected = ["Dairy", "Egg", "Wheat", "Tree Nuts"]
         self.assertCountEqual(get_restriction(food),expected)
-
-
 
     def test_get_restriction_main_basic(self):
         """Purpose: Check if basic_cl.py works for valid command line arguments"""
@@ -103,7 +154,7 @@ class Test_get_restriction(unittest.TestCase):
         """Purpose: Check if basic_cl.py works for an argument of list containing a food item that does not exists in datasets"""
         option = "-diet"
         food = "Silly"
-        expected = usage_diet
+        expected = "Sorry, the item you are searching for is not in the menu of Chick-fil-A."
         file_path = 'ProductionCode/basic_cl.py' #path to the production code
         code = subprocess.Popen(['python3', file_path, option, food], 
                                 stdin=subprocess.PIPE, stdout=subprocess.PIPE,
