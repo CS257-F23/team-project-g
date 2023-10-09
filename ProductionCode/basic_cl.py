@@ -43,6 +43,7 @@ def load_data():
         data.append(row)
 
     data.pop(0) # remove header
+    file.close() #close file
     return data
 
 def get_value(row, column):
