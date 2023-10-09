@@ -66,15 +66,16 @@ def get_allergies(food = ""):
 
 
 
-
 #Show up when the user is typing wrong format of the URL
 @app.errorhandler(404)
 def page_not_found(e):
      '''error handling for 404 error (URL not found)'''
      err_msg = "Oops, the page you were looking for doesn't exist, please refer to homepage or go to one of the pages below:"
      return render_template("error_page.html", error_msg = err_msg, usage_message_ln1 = calories_instruction, usage_message_ln2 = diet_instruction, 
-          usage_message_ln3 = URL_instruction, example1 = example1, example2=example2)
+          usage_message_ln3 = URL_instruction, example1 = example1, example2=example2)    #replacing parameters in error_page.html
 
+
+#Show up when there is something wrong with the code
 @app.errorhandler(500)
 def python_bug(e):
      '''error handling for 500 error'''
