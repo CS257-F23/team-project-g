@@ -98,6 +98,13 @@ class Test_flask_html(unittest.TestCase):
         result = "Sorry, the item you are searching for is not in the menu of Chick-fil-A."
         expected = "Sorry, the item you are searching for is not in the menu of Chick-fil-A."
         self.assertEqual(diet_message(result), expected)
+
+    #base case
+    def test_split_food_input(self):
+        '''check if split_food_input() works for valid list argument'''
+        food = "Tomato,Honey Roasted BBQ Sauce,Coffee"
+        expected = ["Tomato","Honey Roasted BBQ Sauce","Coffee"]
+        self.assertCountEqual(split_food_input(food), expected) #checking whether two lists have the same element
     
 if __name__=="__main__":
     unittest.main()

@@ -40,6 +40,9 @@ def diet_message(result):
           msg_pt1 = "Your food include(s) "
           return msg_pt1 + (str(result))[1:-1]+ ". Pay attention!"
 
+def split_food_input(food):
+     return food.split(",")
+
 
 @app.route('/')
 def homepage():
@@ -60,7 +63,7 @@ def get_calorie(food = ""):
 @app.route('/diet/<food>', strict_slashes=False)
 def get_allergies(food = ""):
      '''display the allergies of the food item, if food item not found, then display a message'''
-     food_list = food.split(",")
+     food_list = split_food_input(food)
      load_data()
      result = get_restriction(food_list)
      message = diet_message(result)  #process the message based on result
