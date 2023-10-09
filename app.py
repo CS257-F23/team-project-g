@@ -15,7 +15,7 @@ def calories_message(result, food):
           return msg_pt1 + food + " is " + str(result) + "."
 
 def diet_message(result):
-     if (result == usage_diet):
+     if (result == "Sorry, the item you are searching for is not in the menu of Chick-fil-A."):
           return result
      elif(len(result)==0):
           no_allergy_msg = "Your food include(s) no allergies. Have fun!"
