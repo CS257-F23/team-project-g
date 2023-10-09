@@ -186,6 +186,8 @@ def check_sysArgv(command, argument):
     '''Arguments: the position of the command line input we want to check, and an expected argument
     Return value: the usage message shown to users
     Purpose: helper function for main() to print usage message out'''
+    if len(command) == 1: #no command line argument
+        return False
     return command[1] == argument
 
 #helper function for main

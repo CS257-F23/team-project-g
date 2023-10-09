@@ -14,37 +14,43 @@ class Test_get_calories_by_name(unittest.TestCase):
     def test_get_value_normal(self):
         """Purpose: Check if get_value works for valid row/column input"""
         value = get_value(2, "Size")
-        self.assertEqual(value, '59g')
+        expected = '59g'
+        self.assertEqual(value, expected)
     
     #edge case
     def test_get_value_edge(self):
         """Purpose: Check if get_value works for edge row/column input (last entry)"""
         value = get_value(240, "Fish")
-        self.assertEqual(value, '0')
+        expected = '0'
+        self.assertEqual(value, expected)
 
     #base case
     def test_get_row_normal(self):
         """Purpose: Check if get_row works for valid food"""
         row = get_row("Barbeque Sauce")
-        self.assertEqual(row, 3)
+        expected = 3
+        self.assertEqual(row, expected)
 
     #edge case
     def test_get_row_invalid(self):
         """Purpose: Check if get_row works for invalid food"""
         row = get_row("Charlie")
-        self.assertEqual(row, -1)
+        expected = -1
+        self.assertEqual(row, expected)
     
     #base case
     def test_get_calories_by_name_allcorrect1(self):
         """Purpose: Check if get_calories_by_name works for valid food item."""
         calories=get_calories_by_name('Coffee')
-        self.assertEqual(calories, '0')
+        expected = '0'
+        self.assertEqual(calories, expected)
     
     #base case
     def test_get_calories_by_name_capitalerror(self):
         """Purpose: Check if get_calories_by_name() works for valid food item with wrong capitalizaton."""
         calories=get_calories_by_name('PEAch Milkshake')
-        self.assertEqual(calories, '590')
+        expected = '590'
+        self.assertEqual(calories, expected)
     
     #edge case
     def test_get_calories_by_name_wrongfood(self):
@@ -66,7 +72,8 @@ class Test_get_calories_by_name(unittest.TestCase):
                                 stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                                 encoding='utf8') 
         output, err = code.communicate()
-        self.assertEqual(output.strip(), '0') 
+        expected = '0'
+        self.assertEqual(output.strip(), expected) 
         code.terminate()
     
     #edge case
@@ -116,33 +123,38 @@ class Test_get_restriction(unittest.TestCase):
         """Purpose: Check if get_sum works for valid index list and allergy"""
         index_lst = [12, 25, 38]
         allergy = "Fish"
-        self.assertEqual(get_sum(index_lst, allergy), 0)
+        expected = 0
+        self.assertEqual(get_sum(index_lst, allergy), expected)
     
     #edge case
     def test_get_sum_edge(self):
         """Purpose: Check if get_sum works for edge case index list and allergy (first + last entry)"""
         index_lst = [0, 240]
         allergy = "Dairy"
-        self.assertEqual(get_sum(index_lst, allergy), 2)
+        expected = 2
+        self.assertEqual(get_sum(index_lst, allergy), expected)
 
     #base case
     def test_check_list_invalidity_normal(self):
         """Purpose: Check if check_list_invalidity works for valid index list"""
         food_index = [12, 25, 38]
-        self.assertEqual(check_list_invalidity(food_index), None)
+        expected = None
+        self.assertEqual(check_list_invalidity(food_index), expected)
 
     #edge case
     def test_check_list_invalidity_invalid(self):
         """Purpose: Check if check_list_invalidity works for invalid index list"""
         food_index = [12, 25, -1]
-        self.assertEqual(check_list_invalidity(food_index), True)
+        expected = True
+        self.assertEqual(check_list_invalidity(food_index), expected)
     
     #base case
     def test_get_allergy_sums_normal(self):
         """Purpose: Check if get_allergy_sums works for valid index list and allergy list"""
         food_index = [12, 25, 38]
         allergy_lst = ["Dairy",	"Egg", "Soy"]
-        self.assertEqual(get_allergy_sums(food_index, allergy_lst), [1,0,0])
+        expected = [1,0,0]
+        self.assertEqual(get_allergy_sums(food_index, allergy_lst), expected)
         
     #base case
     def test_get_allergy_sums_normal(self):
@@ -150,7 +162,8 @@ class Test_get_restriction(unittest.TestCase):
         first + last entry"""
         food_index = [0, 240]
         allergy_lst = ["Dairy",	"Fish"]
-        self.assertEqual(get_allergy_sums(food_index, allergy_lst), [2,0])
+        expected = [2,0]
+        self.assertEqual(get_allergy_sums(food_index, allergy_lst), expected)
 
     #base case
     def test_print_restriction_normal(self):
