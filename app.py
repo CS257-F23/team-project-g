@@ -36,12 +36,12 @@ def diet_message(result):
 def homepage():
      '''display usage statement on the homepage'''
      calories_instruction  = "To get calories by food name: access http://XXX.X.X.X:YYYY/calorie/food"
-     diet_instruction  = "To get restrictions by food name: access http://XXX.X.X.X:YYYY/diet/food"
+     diet_instruction  = "To get restrictions by food name: access http://XXX.X.X.X:YYYY/diet/food1,food2,... (at least one food, seperate multiple foods by ',')"
      URL_instruction = ("Replace 'food' with the food of your choice,"
                         "'XXX.X.X.X' with your IP address, and"
                         "'YYYY' with your port number")
      example1 = "Usage example: http://127.0.0.1:5000/calorie/Garden Herb Ranch Sauce"
-     example2 = "Usage example: http://127.0.0.1:5000/diet/Garden Herb Ranch Sauce"
+     example2 = "Usage example: http://127.0.0.1:5000/diet/Garden Herb Ranch Sauce,Tomato"
      return render_template("homepage.html", usage_message_ln1 = calories_instruction, usage_message_ln2 = diet_instruction, 
                             usage_message_ln3 = URL_instruction, example1 = example1, example2=example2)   #replacing parameters in homepage.html
 
@@ -70,15 +70,21 @@ def get_allergies(food = ""):
 @app.errorhandler(404)
 def page_not_found(e):
      '''error handling for 404 error (URL not found)'''
-     return "sorry, wrong format, refer to the homepage for more info"
+     err_msg = "Oops, the page you were looking for doesn't exist, please refer to homepage or go to one of the pages below:"
+     calories_instruction  = "To get calories by food name: access http://XXX.X.X.X:YYYY/calorie/food"
+     diet_instruction  = "To get restrictions by food name: access http://XXX.X.X.X:YYYY/diet/food1,food2,... (at least one food, seperate multiple foods by ',')"
+     URL_instruction = ("Replace 'food' with the food of your choice,"
+                        "'XXX.X.X.X' with your IP address, and"
+                        "'YYYY' with your port number")
+     example1 = "Usage example: http://127.0.0.1:5000/calorie/Garden Herb Ranch Sauce"
+     example2 = "Usage example: http://127.0.0.1:5000/diet/Garden Herb Ranch Sauce,Tomato"
+     return render_template("error_page.html", error_msg = err_msg, usage_message_ln1 = calories_instruction, usage_message_ln2 = diet_instruction, 
+          usage_message_ln3 = URL_instruction, example1 = example1, example2=example2)
 
-#Show up when there is something wrong with the code
 @app.errorhandler(500)
 def python_bug(e):
      '''error handling for 500 error'''
      return "Internal Server Error"
-
-
 
 if __name__ == '__main__':
     app.run()
