@@ -2,6 +2,8 @@ from app import *
 import unittest
 
 class Test_flask_html(unittest.TestCase):
+    
+    #base case
     def test_home_page(self):
         '''check if app.py works for the homepage (route '/') '''
         self.app = app.test_client()
@@ -12,6 +14,7 @@ class Test_flask_html(unittest.TestCase):
         self.assertIn(expected_pt1, response.data.decode('utf-8'))
         self.assertIn(expected_pt2, response.data.decode('utf-8'))
 
+    #base case
     def test_calorie_route(self):
         '''check if app.py works for valid route for /calorie'''
         self.app = app.test_client()
@@ -20,6 +23,7 @@ class Test_flask_html(unittest.TestCase):
         expected = "Calorie count of Hash Browns is 270."
         self.assertIn(expected, response.data.decode('utf-8'))
 
+    #edge case
     def test_calorie_route_invalid(self):
         '''check if app.py works for valid route /calorie but invalid argument()'''
         self.app = app.test_client()
@@ -28,6 +32,7 @@ class Test_flask_html(unittest.TestCase):
         expected = "Sorry, the item you are searching for is not in the menu of Chick-fil-A."
         self.assertIn(expected, response.data.decode('utf-8'))
 
+    #edge case
     def test_calorie_invalid(self): #test for 404 error
         '''check if app.py works for invalid (non-existing) route'''
         self.app = app.test_client()
@@ -35,6 +40,7 @@ class Test_flask_html(unittest.TestCase):
         response = self.app.get(route, follow_redirects=True)
         self.assertEqual("sorry, wrong format, refer to the homepage for more info", response.data.decode('utf-8'))
 
+    #base case
     def test_calorie_message_not_found(self):
         '''check if calorie_message works for an argument indicating food item not found'''
         food = "McDonald Burger"
@@ -42,6 +48,7 @@ class Test_flask_html(unittest.TestCase):
         expected = "Sorry, the item you are searching for is not in the menu of Chick-fil-A."
         self.assertEqual(calories_message(result,food), expected)
     
+    #base case
     def test_calorie_message_base(self):
         '''check if calorie_message works for valid calorie and food item argument'''
         food = "Tomato"
@@ -49,6 +56,7 @@ class Test_flask_html(unittest.TestCase):
         expected = "Calorie count of Tomato is 5."
         self.assertEqual(calories_message(result, food), expected)
 
+    #base case
     def test_diet_route_valid(self):
         '''check if app.py works for valid route and argument for /diet'''
         self.app = app.test_client()
@@ -59,31 +67,35 @@ class Test_flask_html(unittest.TestCase):
         self.assertIn(expected_pt1, response.data.decode('utf-8'))
         self.assertIn(expected_pt2, response.data.decode('utf-8'))
 
-    # def test_diet_route_invalid(self):
-    #     '''check if app.py works for valid route /diet but invalid argument()'''
-    #     self.app = app.test_client()
-    #     route = '/diet/Silly'
-    #     response = self.app.get(route, follow_redirects=True)
-    #     expected = "Sorry, the item you are searching for is not in the menu of Chick-fil-A."
-    #     self.assertIn(expected, response.data.decode('utf-8'))
+    #edge case
+    def test_diet_route_invalid(self):
+        '''check if app.py works for valid route /diet but invalid argument()'''
+        self.app = app.test_client()
+        route = '/diet/Silly'
+        response = self.app.get(route, follow_redirects=True)
+        expected = "Sorry, the item you are searching for is not in the menu of Chick-fil-A."
+        self.assertIn(expected, response.data.decode('utf-8'))
 
+    #base case
     def test_diet_message_base(self):
         '''check if diet_message works for valid result argument'''
         result = ['Dairy','Egg']
         expected = "Your food include(s) 'Dairy', 'Egg'. Pay attention!"
         self.assertIn(diet_message(result), expected)
     
+    #base case
     def test_diet_message_empty_list(self):
         '''check if diet_message works for empty list argument'''
         result = []
         expected = "Your food include(s) no allergies. Have fun!"
         self.assertIn(diet_message(result), expected)
 
+    #base case
     def test_diet_message_not_found(self):
         '''check if diet_message works for an argument indicating food item not found'''
         result = "Sorry, the item you are searching for is not in the menu of Chick-fil-A."
         expected = "Sorry, the item you are searching for is not in the menu of Chick-fil-A."
         self.assertEqual(diet_message(result), expected)
     
-    if __name__=="__main__":
-        unittest.main()
+if __name__=="__main__":
+    unittest.main()
