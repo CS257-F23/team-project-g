@@ -2,6 +2,8 @@ from flask import Flask, render_template
 from ProductionCode.basic_cl import *
 
 app = Flask(__name__)
+
+#These are the variables for usage statement.
 usage_diet = ("Usage : python3 Production/basic_cl.py -diet 'food1' ['food2' ... ]\n"
             "Note: at least one food option is required after '-diet', multiple food items are valid as well")
 data = []
