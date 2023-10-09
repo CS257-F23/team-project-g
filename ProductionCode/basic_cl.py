@@ -165,20 +165,20 @@ def msg():
     Purpose: helper function for main() to print usage message out'''
     return "usage method not found, please use one of the usage method below: \n" + usage_calories + "\n" + usage_diet
 
-def check_sysArgv(position, argument):
+def check_sysArgv(command, argument):
     '''Arguments: the position of the command line input we want to check, and an expected argument
     Return value: the usage message shown to users
     Purpose: helper function for main() to print usage message out'''
-    return sys.argv[position] == argument
+    return command[1] == argument
 
 def print_msg(command_line):
     '''Arguments: a list of command line
     Return value: the usage message shown to users
     Purpose: helper function for main() to print usage message out'''
-    if check_sysArgv(1, "-calories"):
+    if check_sysArgv(command_line, "-calories"):
         return msg_calories(command_line)
     
-    elif check_sysArgv(1, "-diet"):
+    elif check_sysArgv(command_line, "-diet"):
         return msg_diet(command_line)
 
     else:

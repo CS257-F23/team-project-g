@@ -11,6 +11,11 @@ class Test_get_calories_by_name(unittest.TestCase):
         """Purpose: Check if get_value works for valid row/column input"""
         value = get_value(2, "Size")
         self.assertEqual(value, '59g')
+    
+    def test_get_value_edge(self):
+        """Purpose: Check if get_value works for edge row/column input (last entry)"""
+        value = get_value(240, "Fish")
+        self.assertEqual(value, '0')
 
     def test_get_row_normal(self):
         """Purpose: Check if get_row works for valid food"""
@@ -96,6 +101,12 @@ class Test_get_restriction(unittest.TestCase):
         index_lst = [12, 25, 38]
         allergy = "Fish"
         self.assertEqual(get_sum(index_lst, allergy), 0)
+    
+    def test_get_sum_edge(self):
+        """Purpose: Check if get_sum works for edge case index list and allergy (first + last entry)"""
+        index_lst = [0, 240]
+        allergy = "Dairy"
+        self.assertEqual(get_sum(index_lst, allergy), 2)
 
     def test_check_list_invalidity_normal(self):
         """Purpose: Check if check_list_invalidity works for valid index list"""
@@ -113,7 +124,27 @@ class Test_get_restriction(unittest.TestCase):
         allergy_lst = ["Dairy",	"Egg", "Soy"]
         self.assertEqual(get_allergy_sums(food_index, allergy_lst), [1,0,0])
         
-    # no edge?
+    def test_get_allergy_sums_normal(self):
+        """Purpose: Check if get_allergy_sums works for edge case valid index list and allergy list
+        first + last entry"""
+        food_index = [0, 240]
+        allergy_lst = ["Dairy",	"Fish"]
+        self.assertEqual(get_allergy_sums(food_index, allergy_lst), [2,0])
+
+    def test_print_restriction_normal(self):
+        """Purpose: Check if print_restriction works for valid allergy sum list and allergy list"""
+        allergy_sum_lst = [2, 1, 0]
+        allergy_lst  = ["Dairy", "Egg", "Soy"]
+        expected = ["Dairy", "Egg"]
+        self.assertEqual(get_restriction(allergy_sum_lst, allergy_lst), expected)
+
+    def test_print_restriction_edge(self):
+        """Purpose: Check if print_restriction works for edge allergy sum list and allergy list,
+        (no indicator of allergy exists (they are all 0))"""
+        allergy_sum_lst = [0, 0, 0, 0, 0, 0]
+        allergy_lst  = ["Dairy","Egg","Soy","Wheat","Tree Nuts","Fish"]
+        expected = []
+        self.assertEqual(get_restriction(allergy_sum_lst, allergy_lst), expected)
 
     def test_get_restriction_one_food(self):
         """Purpose: Check if get_restriction() works for a list with one valid food item"""
@@ -175,7 +206,80 @@ class Test_get_restriction(unittest.TestCase):
         self.assertEqual(output.strip(), expected) 
         code.terminate() 
 
+class Test_main_helper(unittest.TestCase):
+    usage_calories = ("Usage : python3 Production/basic_cl.py -calories 'food'\n"
+            "Note: only one food option is required after '-calories', food name of multiple words shoule be put in quotes")
+    usage_diet = ("Usage : python3 Production/basic_cl.py -diet 'food1' ['food2' ... ]\n"
+            "Note: at least one food option is required after '-diet', multiple food items are valid as well")
+
+    def test_msg_calories_normal(self):
+        """Purpose: Check if msg_calories works for valid command line argument input"""
+        argument = "python3 Production/basic_cl.py -calories Coffee"
+        expected = "0"
+        self.assertEqual(msg_calories(argument), expected)
+
+    def test_msg_calories_invalid(self):
+        """Purpose: Check if msg_calories works for invalid command line argument input"""
+        argument = "python3 Production/basic_cl.py -calories 1% milk"
+        expected = usage_calories
+        self.assertEqual(msg_calories(argument), expected)
+
+    def test_msg_diet_normal(self):
+        """Purpose: Check if msg_diet works for valid command line argument input"""
+        argument = "python3 Production/basic_cl.py -diet 'Crispy Bell Peppers' 'Garden Herb Ranch Dressing'"
+        expected = "['Dairy', 'Egg', 'Wheat']"
+        self.assertEqual(msg_diet(argument), expected)
+
+    def test_msg_diet_invalid(self):
+        """Purpose: Check if msg_diet works for invalid command line argument input"""
+        argument = "python3 Production/basic_cl.py -diet"
+        expected = usage_calories
+        self.assertEqual(msg_diet(argument), expected)
+
+    def test_msg(self):
+        """Purpose: Check if msg works"""
+        expected = "usage method not found, please use one of the usage method below: \n" + usage_calories + "\n" + usage_diet
+        self.assertEqual(msg(), expected)
     
+    def test_check_sysArgv_calories(self):
+        """Purpose: Check if check_sysArgv works for valid calories command line argument input"""
+        command = "python3 Production/basic_cl.py -calories Coffee"
+        argument = "-calories"
+        expected = True
+        self.assertEqual(msg_calories(command, argument), expected)
+
+    def test_check_sysArgv_diet(self):
+        """Purpose: Check if check_sysArgv works for valid diet command line argument input"""
+        command = "python3 Production/basic_cl.py -diet"
+        argument = "-diet"
+        expected = True
+        self.assertEqual(check_sysArgv(command, argument), expected)
+
+    def test_check_sysArgv_invalid(self):
+        """Purpose: Check if check_sysArgv works for invalid command line argument input"""
+        command = "python3 Production/basic_cl.py -Charlie"
+        argument = "-calories"
+        expected = False
+        self.assertEqual(check_sysArgv(command, argument), expected)
+
+    def test_print_msg_calories(self):
+        """Purpose: Check if print_msg works for valid calories command line argument input"""
+        command = "python3 Production/basic_cl.py -calories Coffee"
+        expected = '0'
+        self.assertEqual(print_msg(command), expected)
+
+    def test_print_msg_diet(self):
+        """Purpose: Check if print_msg works for valid diet command line argument input"""
+        command = "python3 Production/basic_cl.py -diet 'Crispy Bell Peppers' 'Garden Herb Ranch Dressing'"
+        expected = "['Dairy', 'Egg', 'Wheat']"
+        self.assertEqual(check_sysArgv(command), expected)
+
+    def test_print_msg_invalid(self):
+        """Purpose: Check if print_msg works for invalid command line argument input"""
+        command = "python3 Production/basic_cl.py -Charlie"
+        expected = "usage method not found, please use one of the usage method below: \n" + usage_calories + "\n" + usage_diet
+        self.assertEqual(check_sysArgv(command), expected)
+
 load_data()
 if __name__ == '__main__':
     unittest.main()
