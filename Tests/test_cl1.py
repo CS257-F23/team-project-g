@@ -76,7 +76,7 @@ class Test_get_calories_by_name(unittest.TestCase):
         self.assertEqual(output.strip(), expected) 
         code.terminate()
     
-    #edge case
+    #edge_case
     def test_get_calories_by_name_commanderror(self):
         """Purpose: Check if basic_cl.py works for invalid '-calories' command line arguments"""
         file_path = 'ProductionCode/basic_cl.py' #path to the production code
