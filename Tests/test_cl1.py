@@ -64,7 +64,7 @@ class Test_get_calories_by_name(unittest.TestCase):
         self.assertEqual(output.strip(), 'Sorry, the item you are searching for is not in the menu of Chick-fil-A.') 
         code.terminate()
     
-    #base case
+    #base_case
     def test_get_calories_by_name_commandcorrect(self):
         """Purpose: Check if basic_cl.py works for valid 'calories' command line arguments."""
         file_path = 'ProductionCode/basic_cl.py' #path to the production code
