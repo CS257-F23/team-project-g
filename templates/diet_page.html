@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>Search Result</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='datastyle_diet.css') }}">
+    </head> 
+
+    <body> 
+        <div>
+            <a href="/" class="back">&laquo; Back</a>
+        </div> 
+            <h2>Search Result</h2>  
+            {% if allergies != "" %}
+                <h3>{{food}} contain(s) the following allergies: {{allergies}}</h3> 
+            {% else %}
+                <p>{{food}} contain(s) no allergies.</p>
+            {% endif %}
+        </div>
+
+        
+    </body> 
+
+</html>

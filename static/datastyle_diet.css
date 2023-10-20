@@ -1,0 +1,18 @@
+a.back {
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: rgb(253, 136, 136);
+    color: white;
+    border-radius: 10px; /* source : https://www.w3schools.com/cssref/css3_pr_border-radius.php*/ 
+    border: none; 
+  }
+  
+  a:hover {
+     background-color: rgb(253, 172, 172);
+  }
+  
+  h2 {
+      text-decoration: none;
+  }
+  

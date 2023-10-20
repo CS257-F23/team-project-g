@@ -1,13 +1,35 @@
 <html>
     <head>
-        <title>URL usage instruction</title>
+        <title>Search Result</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='datastyle_home.css') }}">
+        <script>
+            function placeholder_msg() {
+                textBox = document.getElementById('text_box');
+                action_item = document.getElementById("search");
+                option_selected = document.getElementById('option_select');  /* source: https://www.geeksforgeeks.org/how-to-get-selected-value-in-dropdown-list-using-javascript/ */
+                if (option_selected.value == 'Calorie') {
+                    action_item.action = "get_calorie";
+                    textBox.placeholder = 'calorie count of one food: e.g Tomato';
+                } else if (option_selected.value == 'Allergy') {
+                    action_item.action = "get_diet";
+                    textBox.placeholder = 'e.g Tomato,Coffee ("," between foods, at least one)';
+                }
+            }
+        </script>
     </head>
-    <body>
-        <h1 style="color:rgb(58, 156, 254);">URL usage instruction</h1>
-        <h2>{{usage_message_ln1}}</h2>
-        <h2>{{usage_message_ln2}}</h2>
-        <h3>{{usage_message_ln3}}</h3>
-        <h3>{{example1}}</h3>
-        <h3>{{example2}}</h3>
+    <body> 
+        <h1>Chick-fil-A Nutrition Guide</h1>
+        <div>
+        <form id = "search" action="get_calorie" method="get">
+            <label for="option"></label>
+            <select name="option_choice" id="option_select" onchange="placeholder_msg()">  <!-- source: https://www.w3schools.com/jsref/event_onchange.asp -->
+                <option value="Calorie">Calorie</option>
+                <option value="Allergy">Allergy</option> 
+            </select>
+            <input type="text" id="text_box" name="food_item" placeholder="calorie count of one food: e.g Tomato" value="">  <!--source: https://www.w3schools.com/howto/howto_css_searchbar.asp */ -->
+            <input type="submit" value="Search &#128269;" id="search_button" >
+        </form>
+        </div>
     </body>
 </html>
+
