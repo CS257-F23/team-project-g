@@ -14,8 +14,11 @@ def get_calorie_by_food():
      '''display the calorie count of the food'''
      cl.load_data()
      food = request.args['food_item']
-     calorie = int(cl.get_calories_by_name(food))
-     return render_template("calorie_page.html", food = food, count = calorie)
+     calorie = cl.get_calories_by_name(food)
+     if calorie == "Sorry, the item you are searching for is not in the menu of Chick-fil-A.":
+          return render_template("food_not_found_page.html")
+     calorie = int(calorie)
+     return render_template("calorie_page.html", food = food, count = calorie, num_present = round(100*(calorie/600), 2))
 
 @app.route('/get_diet', strict_slashes=False)
 def get_diet():
@@ -24,6 +27,8 @@ def get_diet():
      food = request.args['food_item']
      food_list = food.split(",")
      allergies = str(cl.get_restriction(food_list))
+     if allergies == "Sorry, the item you are searching for is not in the menu of Chick-fil-A.":
+          return render_template("food_not_found_page.html")
      return render_template("diet_page.html", food = food, allergies = allergies)
 
 @app.errorhandler(404)
