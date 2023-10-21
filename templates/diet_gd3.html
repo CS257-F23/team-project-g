@@ -9,7 +9,7 @@
             <a href="/" class="back">&laquo; Back</a>
         </div> 
             <h2>Search Result</h2>  
-            {% if allergies != "" %}
+            {% if allergies != "[]" %}
                 <h3>{{food}} contain(s) the following allergies: {{ allergies }}</h3> 
             {% else %}
                 <p>{{food}} contain(s) no allergies.</p>
