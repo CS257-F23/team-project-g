@@ -21,9 +21,9 @@ def get_calorie_by_food():
      return render_template("calorie_gd3.html", food = food, count = calorie, num_present = round(100*(calorie/600), 2))
 
 @app.route('/get_diet', strict_slashes=False)
-def get_diet():
-     cl.load_data()
+def get_diet():  
      '''display the dietary restriction based on food'''
+     cl.load_data()
      food = request.args['food_item']
      food_list = food.split(",")
      allergies = str(cl.get_restriction(food_list))
@@ -34,7 +34,7 @@ def get_diet():
 @app.errorhandler(404)
 def page_not_found(e):
      '''error handling for 404 error (URL not found)'''
-     return render_template("error_gd3.html")
+     return render_template("errorpage_gd3.html")
 
 @app.errorhandler(500)
 def python_bug(e):
