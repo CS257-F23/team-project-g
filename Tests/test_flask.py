@@ -1,4 +1,4 @@
-from app import *
+from app_gd2 import *  
 import unittest
 
 class Test_flask_html(unittest.TestCase):
@@ -39,8 +39,8 @@ class Test_flask_html(unittest.TestCase):
         self.app = app.test_client()
         route = '/calories/Hash Browns'
         response = self.app.get(route, follow_redirects=True)
-        expectecd = "Oops, the page you were looking for doesn&#39;t exist, please refer to homepage or go to one of the pages below:"
-        self.assertIn(expectecd, response.data.decode('utf-8'))
+        expected = "Oops, the page you were looking for doesn\'t exist, please refer to homepage or go to one of the pages below:"
+        self.assertIn(expected, response.data.decode('utf-8'))
 
     #base case
     def test_calorie_message_not_found(self):
