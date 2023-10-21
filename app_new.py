@@ -1,4 +1,4 @@
-import ProductionCode.core as core
+import ProductionCode.basic_cl as cl
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
@@ -12,15 +12,18 @@ def homepage():
 @app.route('/get_calorie', strict_slashes=False)
 def get_calorie_by_food():
      '''display the calorie count of the food'''
+     cl.load_data()
      food = request.args['food_item']
-     calorie = core.get_calorie(food)
+     calorie = int(cl.get_calories_by_name(food))
      return render_template("calorie_page.html", food = food, count = calorie)
 
 @app.route('/get_diet', strict_slashes=False)
 def get_diet():
+     cl.load_data()
      '''display the dietary restriction based on food'''
      food = request.args['food_item']
-     allergies = core.get_restriction(food)
+     food_list = food.split(",")
+     allergies = str(cl.get_restriction(food_list))
      return render_template("diet_page.html", food = food, allergies = allergies)
 
 @app.errorhandler(404)
