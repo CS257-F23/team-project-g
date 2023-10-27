@@ -13,7 +13,7 @@ def homepage():
 def get_calorie_by_food():
      '''display the calorie count of the food'''
      cl.load_data()
-     food = request.args['food_item']
+     food = request.args['text_box']
      calorie = cl.get_calories_by_name(food)
      if calorie == "Sorry, the item you are searching for is not in the menu of Chick-fil-A.":
           return render_template("foodNotFoundPage_gd3.html")
@@ -24,7 +24,7 @@ def get_calorie_by_food():
 def get_diet():  
      '''display the dietary restriction based on food'''
      cl.load_data()
-     food = request.args['food_item']
+     food = request.args['text_box']
      food_list = food.split(",")
      allergies = str(cl.get_restriction(food_list))
      if allergies == "Sorry, the item you are searching for is not in the menu of Chick-fil-A.":

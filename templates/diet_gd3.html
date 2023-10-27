@@ -7,10 +7,10 @@
     <body> 
         <div>
             <a href="/" class="back">&laquo; Back</a>
-        </div> 
-            <h2>Search Result</h2>  
+        </div>
+            <h1>Search Result</h1>  
             {% if allergies != "[]" %}
-                <h3>{{food}} contain(s) the following allergies: {{ allergies }}</h3> 
+                <p>{{food}} contain(s) the following allergies: {{ allergies }}</p> 
             {% else %}
                 <p>{{food}} contain(s) no allergies.</p>
             {% endif %}
