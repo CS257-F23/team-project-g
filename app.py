@@ -32,7 +32,7 @@ def split_food_input(food):
 def homepage():
      '''display usage statement on the homepage'''
      calories_instruction  = "To get calories by food name: access http://XXX.X.X.X:YYYY/calorie/food"
-     return render_template("homepage_old.html")
+     return render_template("homepage_gd2.html")
 
 @app.route('/calorie/<food>', strict_slashes=False)
 def get_calorie(food = ""):
@@ -40,7 +40,7 @@ def get_calorie(food = ""):
      load_data()
      result = get_calories_by_name(food)
      message = calories_message(result, food)
-     return render_template("calorie.html", message = message)
+     return render_template("calorie_gd2.html", message = message)
 
 
 @app.route('/diet/<food>', strict_slashes=False)
@@ -50,14 +50,14 @@ def get_allergies(food = ""):
      load_data()
      result = get_restriction(food_list)
      message = diet_message(result) 
-     return render_template("diet.html", message = message)
+     return render_template("diet_gd2.html", message = message)
 
 
 @app.errorhandler(404)
 def page_not_found(e):
      '''error handling for 404 error (URL not found)'''
      err_msg = "Oops, the page you were looking for doesn't exist, please refer to homepage or go to one of the pages below:"
-     return render_template("error_page.html")
+     return render_template("errorpage_gd2.html")
 
 
 @app.errorhandler(500)
