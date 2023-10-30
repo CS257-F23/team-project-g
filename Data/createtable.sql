@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS webapp;
-CREATE TABLE webapp(
+DROP TABLE IF EXISTS teamg;
+CREATE TABLE teamg(
   food text,
   calories int,
   dairy int,
