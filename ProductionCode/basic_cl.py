@@ -22,28 +22,17 @@ def load_data():
         # Create a dictionary for each row
         row = {
                 'Item': fields[0],
-                'Size': fields[1],
-                'Calories': fields[2],
-                'Fat': fields[3],
-                'SaturatedFat': fields[4],
-                'TransFat': fields[5],
-                'Cholesterol': fields[6],
-                'Sodium': fields[7],
-                'Carbohydrates': fields[8],
-                'Fiber': fields[9],
-                'Sugar': fields[10],
-                'Protein': fields[11],
-                'Dairy': fields[12],
-                'Egg': fields[13],
-                'Soy': fields[14],
-                'Wheat': fields[15],
-                'Tree Nuts': fields[16],
-                'Fish': fields[17]
+                'Calories': fields[1],
+                'Dairy': fields[2],
+                'Egg': fields[3],
+                'Soy': fields[4],
+                'Wheat': fields[5],
+                'Tree Nuts': fields[6],
+                'Fish': fields[7]
         }
 
         data.append(row)
 
-    data.pop(0) # remove header
     file.close() #close file
     return data
 

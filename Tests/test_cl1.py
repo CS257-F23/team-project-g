@@ -13,8 +13,8 @@ class Test_get_calories_by_name(unittest.TestCase):
     #base case
     def test_get_value_normal(self):
         """Purpose: Check if get_value works for valid row/column input"""
-        value = get_value(2, "Size")
-        expected = '59g'
+        value = get_value(0, "Calories")
+        expected = '160'
         self.assertEqual(value, expected)
     
     #edge case
