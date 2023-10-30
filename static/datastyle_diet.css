@@ -16,3 +16,25 @@ a.back {
       text-decoration: none;
   }
   
+  nav ul {
+    border: 2px solid blue;
+    list-style-type: none;
+    overflow: hidden;
+}
+
+nav li {
+    float: left;
+}
+
+nav li a {
+    display: block;
+    color: blue;
+    text-decoration: none;
+    text-align: center;
+    padding: 14px 16px;
+}
+
+nav li a:hover {
+    color: white;
+    background-color: blue;
+}

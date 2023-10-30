@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def homepage():
-     '''renders html for the homepage'''
+     '''renders html for the homepage, where the main functions are'''
      return render_template("homepage_gd3.html")
 
 @app.route('/get_calorie', strict_slashes=False)
@@ -31,6 +31,16 @@ def get_diet():
           return render_template("foodNotFoundPage_gd3.html")
      return render_template("diet_gd3.html", food = food, allergies = allergies)
 
+@app.route('/about')
+def aboutpage():
+     '''renders html for the about page'''
+     return render_template("about_gd3.html")
+
+@app.route('/contact')
+def contactpage():
+     '''renders html for the contact page'''
+     return render_template("contact_gd3.html")
+
 @app.errorhandler(404)
 def page_not_found(e):
      '''error handling for 404 error (URL not found)'''
@@ -40,6 +50,8 @@ def page_not_found(e):
 def python_bug(e):
      '''error handling for 500 error'''
      return "Internal Server Error"
+
+
 
 if __name__ == '__main__':
     app.run()

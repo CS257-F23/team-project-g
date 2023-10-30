@@ -1,28 +1,27 @@
 a.back {
     text-decoration: none;
+    display: inline-block;
     padding: 8px 16px;
-    background-color: white;
-    color: rgb(253, 136, 136);
+    background-color: rgb(253, 136, 136);
+    color: white;
     border-radius: 10px; /* source : https://www.w3schools.com/cssref/css3_pr_border-radius.php*/ 
     border: none; 
 }
   
 a:hover {
-    background-color: rgb(208, 208, 208);
+    background-color: rgb(253, 172, 172);
 }
   
 h1 {
-    color: whitesmoke;
-    margin-top: 20%;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    background-color: rgb(248, 71, 71);
+    color: white;
     text-align: center;
-}
-
-body{
-    text-align: center;
-}
-
-html{
-    background-color: rgb(253, 136, 136);
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 10%;
+    height: auto;
 }
 
 nav ul {
@@ -47,3 +46,4 @@ nav li a:hover {
     color: white;
     background-color: blue;
 }
+
