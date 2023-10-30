@@ -3,6 +3,7 @@
         <title>Search Result</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='datastyle_calorie.css') }}">   
     </head> 
+    <!--This style tag passes in the count parameter to make the pie chart-->
     <!-- source: https://www.geeksforgeeks.org/how-to-create-a-pie-chart-using-html-css/ -->
     <style>
         .piechart{
@@ -12,6 +13,7 @@
         } 
     </style>
     <body> 
+<<<<<<< HEAD
         <nav>
             <ul>
             <li><a href="/">Home</a></li>
@@ -20,6 +22,12 @@
             </ul>
         </nav>
         <h2>Search Result</h2>
+=======
+        <div>
+            <a href="/" class="back">&laquo; Back</a>
+        </div> 
+        <h1>Search Result</h1>
+>>>>>>> ea48660f78f2e4f039fb415de41a2679237c9ebe
         <p>{{food}} has calorie count of <b>{{count}}</b>.</p>
         <p>As percentage of recommended adult meal calories(600cal): <b> {{ num_present }}%</b>.</p> 
         <div class="piechart" alt="pie chart" ></div>

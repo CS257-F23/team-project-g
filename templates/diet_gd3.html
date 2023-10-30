@@ -5,6 +5,7 @@
     </head> 
 
     <body> 
+<<<<<<< HEAD
         <nav>
             <ul>
             <li><a href="/">Home</a></li>
@@ -13,8 +14,14 @@
             </ul>
         </nav>
             <h2>Search Result</h2>  
+=======
+        <div>
+            <a href="/" class="back">&laquo; Back</a>
+        </div>
+            <h1>Search Result</h1>  
+>>>>>>> ea48660f78f2e4f039fb415de41a2679237c9ebe
             {% if allergies != "[]" %}
-                <h3>{{food}} contain(s) the following allergies: {{ allergies }}</h3> 
+                <p>{{food}} contain(s) the following allergies: {{ allergies }}</p> 
             {% else %}
                 <p>{{food}} contain(s) no allergies.</p>
             {% endif %}
