@@ -1,5 +1,8 @@
 import psycopg2
-import psqlConfig as config
+try:
+    import psqlConfig as config
+except ImportError:
+    from ProductionCode import psqlConfig as config
 
 class DataSource:
     connection = None; 
@@ -66,9 +69,27 @@ class DataSource:
             print ("Something went wrong when executing the query: ", e)
             return None
 
+    def food_exist(self, food_name):
+        '''Retrieve and return the calories of a specified food item.'''
+        try:
+            #set up a cursor
+            cursor = self.connection.cursor()
+            #make the query using %s as a placeholder for the variable
+            query = "SELECT * FROM teamg WHERE LOWER(food)=%s"
 
+
+            #executing the query and saying that the magnitude variable 
+            cursor.execute(query, (food_name.lower(), ))
+
+            if cursor.fetchall() == []:
+                return False   
+            return True
+
+        except Exception as e:
+            print ("Something went wrong when executing the query: ", e)
+            return None
 
 if __name__ == '__main__':
     my_source = DataSource()
-    print(my_source.get_calories_by_name("Tomato")) #prints out all rows with calorie less than 300
-    get_restriction("Garden Herb Ranch Sauce")
+    print(my_source.food_exist("mato")) #prints out all rows with calorie less than 300
+   

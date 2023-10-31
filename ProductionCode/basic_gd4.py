@@ -1,6 +1,9 @@
 import sys
 import csv
-from datasource import DataSource
+if __name__ == "__main__":
+    from datasource import DataSource
+else:
+    from ProductionCode.datasource import DataSource
 
 data = []
 usage_calories = ("Usage : python3 Production/basic_cl.py -calories 'food'\n"
@@ -14,11 +17,16 @@ def get_restriction(food_list):
     Return value: a list of allergies, which includes all the allergens contained for the food list inputted.'''
     allergies_sum = [0,0,0,0,0,0]
     for food in food_list:
+        if food_exist(food) == False:
+            return "not_found"
         get_restriction_item(food, allergies_sum)
     while 0 in allergies_sum:
         allergies_sum.remove(0)
     return allergies_sum
 
+def food_exist(food):
+    data_source = DataSource()
+    return data_source.food_exist(food)
 
 def get_restriction_item(food, allergies_sum):
     '''Arguments: a food item and a list of allergens
@@ -38,9 +46,10 @@ def get_calories_by_name(food):
     Return value: the calories column of the row that the food is in, or if it is not in the list, return a message
     Purpose: get calories of a specified food'''
     data_source = DataSource()
+    if food_exist(food) == False:
+        return "not_found"
     calorie = data_source.get_calorie_from_table(food)
     return calorie[0][0]
-
 
 #load the data from CFAfacts.csv
 def load_data():

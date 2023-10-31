@@ -1,6 +1,6 @@
 import subprocess
 import unittest
-from ProductionCode.basic_cl import *
+from ProductionCode.basic_gd4 import *
 
 #variables for usage statement
 usage_calories = ("Usage : python3 Production/basic_cl.py -calories 'food'\n"
@@ -11,45 +11,17 @@ usage_diet = ("Usage : python3 Production/basic_cl.py -diet 'food1' ['food2' ...
 class Test_get_calories_by_name(unittest.TestCase):
     
     #base case
-    def test_get_value_normal(self):
-        """Purpose: Check if get_value works for valid row/column input"""
-        value = get_value(0, "Calories")
-        expected = '160'
-        self.assertEqual(value, expected)
-    
-    #edge case
-    def test_get_value_edge(self):
-        """Purpose: Check if get_value works for edge row/column input (last entry)"""
-        value = get_value(240, "Fish")
-        expected = '0'
-        self.assertEqual(value, expected)
-
-    #base case
-    def test_get_row_normal(self):
-        """Purpose: Check if get_row works for valid food"""
-        row = get_row("Barbeque Sauce")
-        expected = 3
-        self.assertEqual(row, expected)
-
-    #edge case
-    def test_get_row_invalid(self):
-        """Purpose: Check if get_row works for invalid food"""
-        row = get_row("Charlie")
-        expected = -1
-        self.assertEqual(row, expected)
-    
-    #base case
     def test_get_calories_by_name_allcorrect1(self):
         """Purpose: Check if get_calories_by_name works for valid food item."""
         calories=get_calories_by_name('Coffee')
-        expected = '0'
+        expected = 0
         self.assertEqual(calories, expected)
     
     #base case
     def test_get_calories_by_name_capitalerror(self):
         """Purpose: Check if get_calories_by_name() works for valid food item with wrong capitalizaton."""
         calories=get_calories_by_name('PEAch Milkshake')
-        expected = '590'
+        expected = 590
         self.assertEqual(calories, expected)
     
     #edge case
@@ -103,104 +75,24 @@ class Test_get_calories_by_name(unittest.TestCase):
 
 class Test_get_restriction(unittest.TestCase):
     #base case
-    def test_get_row_index_normal(self):
-        """Purpose: Check if get_row_index works for valid food list"""
-        fd_list = ["Chocolate Milkshake", "Strawberry Milkshake"]
-        index = get_row_index(fd_list)
-        expected = [17, 18]
-        self.assertEqual(index, expected)
-
-    #edge case
-    def test_get_row_index_invalid(self):
-        """Purpose: Check if get_row_index works for food list containing food not in original data"""
-        fd_list = ["Chocolate Milkshake", "Strawberry Milkshake", "Charlie"]
-        index = get_row_index(fd_list)
-        expected = [17, 18, -1]
-        self.assertEqual(index, expected)
-
-    #base case
-    def test_get_sum_normal(self):
-        """Purpose: Check if get_sum works for valid index list and allergy"""
-        index_lst = [12, 25, 38]
-        allergy = "Fish"
-        expected = 0
-        self.assertEqual(get_sum(index_lst, allergy), expected)
-    
-    #edge case
-    def test_get_sum_edge(self):
-        """Purpose: Check if get_sum works for edge case index list and allergy (first + last entry)"""
-        index_lst = [0, 240]
-        allergy = "Dairy"
-        expected = 2
-        self.assertEqual(get_sum(index_lst, allergy), expected)
-
-    #base case
-    def test_check_list_invalidity_normal(self):
-        """Purpose: Check if check_list_invalidity works for valid index list"""
-        food_index = [12, 25, 38]
-        expected = None
-        self.assertEqual(check_list_invalidity(food_index), expected)
-
-    #edge case
-    def test_check_list_invalidity_invalid(self):
-        """Purpose: Check if check_list_invalidity works for invalid index list"""
-        food_index = [12, 25, -1]
-        expected = True
-        self.assertEqual(check_list_invalidity(food_index), expected)
-    
-    #base case
-    def test_get_allergy_sums_normal(self):
-        """Purpose: Check if get_allergy_sums works for valid index list and allergy list"""
-        food_index = [12, 25, 38]
-        allergy_lst = ["Dairy",	"Egg", "Soy"]
-        expected = [1,0,0]
-        self.assertEqual(get_allergy_sums(food_index, allergy_lst), expected)
-        
-    #base case
-    def test_get_allergy_sums_normal(self):
-        """Purpose: Check if get_allergy_sums works for edge case valid index list and allergy list
-        first + last entry"""
-        food_index = [0, 240]
-        allergy_lst = ["Dairy",	"Fish"]
-        expected = [2,0]
-        self.assertEqual(get_allergy_sums(food_index, allergy_lst), expected)
-
-    #base case
-    def test_print_restriction_normal(self):
-        """Purpose: Check if print_restriction works for valid allergy sum list and allergy list"""
-        allergy_sum_lst = [2, 1, 0]
-        allergy_lst  = ["Dairy", "Egg", "Soy"]
-        expected = ["Dairy", "Egg"]
-        self.assertEqual(print_restriction(allergy_sum_lst, allergy_lst), expected)
-
-    #edge case
-    def test_print_restriction_edge(self):
-        """Purpose: Check if print_restriction works for edge allergy sum list and allergy list,
-        (no indicator of allergy exists (they are all 0))"""
-        allergy_sum_lst = [0, 0, 0, 0, 0, 0]
-        allergy_lst  = ["Dairy","Egg","Soy","Wheat","Tree Nuts","Fish"]
-        expected = []
-        self.assertEqual(print_restriction(allergy_sum_lst, allergy_lst), expected)
-
-    #base case
     def test_get_restriction_one_food(self):
         """Purpose: Check if get_restriction() works for a list with one valid food item"""
         food = ["Crispy Bell Peppers"]
-        expected = ["Wheat"]
+        expected = ["wheat"]
         self.assertCountEqual(get_restriction(food),expected)
     
     #base case
     def test_get_restriction_two_food(self):
         """Purpose: Check if get_restriction() works for a list with two valid food items"""
         food = ["Crispy Bell Peppers", "Garden Herb Ranch Dressing"]
-        expected = ["Dairy", "Egg", "Wheat"]
+        expected = ["dairy", "egg", "wheat"]
         self.assertCountEqual(get_restriction(food),expected)
 
     #base case
     def test_get_restriction_five_food(self):
         """Purpose: Check if get_restriction() works for a list with five valid food items"""
         food = ["Crispy Bell Peppers", "Garden Herb Ranch Dressing","Roasted Nut Blend", "5 Ct Nuggets Kid's Meal", "Tomato"]
-        expected = ["Dairy", "Egg", "Wheat", "Tree Nuts"]
+        expected = ["dairy", "egg", "wheat", "nuts"]
         self.assertCountEqual(get_restriction(food),expected)
 
     #base case
@@ -251,7 +143,7 @@ class Test_main_helper(unittest.TestCase):
     def test_msg_calories_normal(self):
         """Purpose: Check if msg_calories works for valid command line argument input"""
         argument = ["Production/basic_cl.py", "-calories", "Coffee"]
-        expected = "0"
+        expected = 0
         self.assertEqual(msg_calories(argument), expected)
 
     #edge case
@@ -265,7 +157,7 @@ class Test_main_helper(unittest.TestCase):
     def test_msg_diet_normal(self):
         """Purpose: Check if msg_diet works for valid command line argument input"""
         argument = ["Production/basic_cl.py", "-diet", "Crispy Bell Peppers", "Garden Herb Ranch Dressing"]
-        expected = ['Dairy', 'Egg', 'Wheat']
+        expected = ['dairy', 'egg', 'wheat']
         self.assertEqual(msg_diet(argument), expected)
 
     #edge case
@@ -309,14 +201,14 @@ class Test_main_helper(unittest.TestCase):
     def test_print_msg_calories(self):
         """Purpose: Check if print_msg works for valid calories command line argument input"""
         command = ["Production/basic_cl.py", "-calories", "Coffee"]
-        expected = '0'
+        expected = 0
         self.assertEqual(print_msg(command), expected)
 
     #base case
     def test_print_msg_diet(self):
         """Purpose: Check if print_msg works for valid diet command line argument input"""
         command = ["Production/basic_cl.py", "-diet", "Crispy Bell Peppers", "Garden Herb Ranch Dressing"]
-        expected = ['Dairy', 'Egg', 'Wheat']
+        expected = ['dairy', 'egg', 'wheat']
         self.assertEqual(print_msg(command), expected)
 
     #edge case
