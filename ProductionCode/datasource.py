@@ -1,5 +1,5 @@
 import psycopg2
-import ProductionCode.psqlConfig as config
+import psqlConfig as config
 
 class DataSource:
     connection = None; 

@@ -17,7 +17,6 @@ def get_calorie_by_food():
      calorie = db.get_calories_by_name(food)
      if calorie == "Sorry, the item you are searching for is not in the menu of Chick-fil-A.":
           return render_template("foodNotFoundPage_gd3.html")
-     calorie = calorie[0][0] 
      return render_template("calorie_gd3.html", food = food, count = calorie, num_present = round(100*(calorie/600), 2))
 
 @app.route('/get_diet', strict_slashes=False)
