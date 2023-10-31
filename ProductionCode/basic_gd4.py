@@ -25,6 +25,8 @@ def get_restriction(food_list):
     return allergies_sum
 
 def food_exist(food):
+    '''Argument: a food item
+    Purpose: check if the food item exists in the database'''
     data_source = DataSource()
     return data_source.food_exist(food)
 
