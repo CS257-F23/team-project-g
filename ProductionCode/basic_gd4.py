@@ -1,14 +1,13 @@
 import sys
-import csv
 if __name__ == "__main__":
     from datasource import DataSource
 else:
     from ProductionCode.datasource import DataSource
 
 data = []
-usage_calories = ("Usage : python3 Production/basic_cl.py -calories 'food'\n"
+usage_calories = ("Usage : python3 Production/basic_gd4.py -calories 'food'\n"
             "Note: only one food option is required after '-calories', food name of multiple words shoule be put in quotes")
-usage_diet = ("Usage : python3 Production/basic_cl.py -diet 'food1' ['food2' ... ]\n"
+usage_diet = ("Usage : python3 Production/basic_gd4.py -diet 'food1' ['food2' ... ]\n"
             "Note: at least one food option is required after '-diet', multiple food items are valid as well")
 
 
@@ -18,7 +17,7 @@ def get_restriction(food_list):
     allergies_sum = [0,0,0,0,0,0]
     for food in food_list:
         if food_exist(food) == False:
-            return "not_found"
+            return "Sorry, the item you are searching for is not in the menu of Chick-fil-A."
         get_restriction_item(food, allergies_sum)
     while 0 in allergies_sum:
         allergies_sum.remove(0)
@@ -49,7 +48,7 @@ def get_calories_by_name(food):
     Purpose: get calories of a specified food'''
     data_source = DataSource()
     if food_exist(food) == False:
-        return "not_found"
+        return "Sorry, the item you are searching for is not in the menu of Chick-fil-A."
     calorie = data_source.get_calorie_from_table(food)
     return calorie[0][0]
 
@@ -140,7 +139,7 @@ def print_msg(command_line):
 def main():
     '''Arguments: None
     Return value: None
-    Purpose: Maintains command line interface, loads data. Usage statement: "Usage: python3 ProductionCode/basic_cl.py -method method_param". Returns relevant information as desired.'''
+    Purpose: Maintains command line interface, loads data. Usage statement: "Usage: python3 ProductionCode/basic_gd4.py -method method_param". Returns relevant information as desired.'''
     load_data()
     print(print_msg(sys.argv))
     

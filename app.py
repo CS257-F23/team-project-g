@@ -1,4 +1,3 @@
-import ProductionCode.basic_cl as cl
 import ProductionCode.basic_gd4 as db
 from flask import Flask, render_template, request
 
@@ -15,7 +14,7 @@ def get_calorie_by_food():
      '''display the calorie count of the food'''
      food = request.args['text_box']
      calorie = db.get_calories_by_name(food)
-     if calorie == "not_found":
+     if calorie == "Sorry, the item you are searching for is not in the menu of Chick-fil-A.":
           return render_template("foodNotFoundPage.html")
      return render_template("calorie.html", food = food, count = calorie, num_present = round(100*(calorie/600), 2))
 
@@ -25,7 +24,7 @@ def get_diet():
      food = request.args['text_box']
      food_list = food.split(",")
      allergies = str(db.get_restriction(food_list))
-     if allergies == "not_found":
+     if allergies == "Sorry, the item you are searching for is not in the menu of Chick-fil-A.":
           return render_template("foodNotFoundPage.html")
      return render_template("diet.html", food = food, allergies = allergies[1:-1])
 

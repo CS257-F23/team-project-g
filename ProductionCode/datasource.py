@@ -70,7 +70,7 @@ class DataSource:
             return None
 
     def food_exist(self, food_name):
-        '''Retrieve and return the calories of a specified food item.'''
+        '''Retrieve and return whether a food exists in the table.'''
         try:
             #set up a cursor
             cursor = self.connection.cursor()
