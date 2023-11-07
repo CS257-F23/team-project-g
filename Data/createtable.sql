@@ -1,11 +1,11 @@
-DROP TABLE IF EXISTS teamg;
-CREATE TABLE teamg(
+DROP TABLE IF EXISTS food_info;
+CREATE TABLE food_info(
   food text,
   calories int,
-  dairy int,
-  egg int,
-  soy int,
-  wheat int,
-  nuts int,
-  fish int
+  dairy boolean,
+  egg boolean,
+  soy boolean,
+  wheat boolean,
+  nuts boolean,
+  fish boolean
 );

@@ -7,10 +7,19 @@ usage_calories = ("Usage : python3 Production/basic_gd4.py -calories 'food'\n"
 usage_diet = ("Usage : python3 Production/basic_gd4.py -diet 'food1' ['food2' ... ]\n"
             "Note: at least one food option is required after '-diet', multiple food items are valid as well")
 
+data_source = None
+
+def get_data_source():
+    global data_source
+    if data_source is None:
+        data_source = DataSource()
+    return data_source
+
 
 def get_restriction(food_list):
     '''Arguments: a list of food
     Return value: a list of allergies, which includes all the allergens contained for the food list inputted.'''
+    get_data_source()
     allergies_sum = [0,0,0,0,0,0]
     for food in food_list:
         if food_exist(food) == False:
@@ -23,13 +32,13 @@ def get_restriction(food_list):
 def food_exist(food):
     '''Argument: a food item
     Purpose: check if the food item exists in the database'''
-    data_source = DataSource()
+    get_data_source()
     return data_source.food_exist(food)
 
 def get_restriction_item(food, allergies_sum):
     '''Arguments: a food item and a list of allergens
     Purpose: update the allergy list with each iteration of the function checking each item.'''
-    data_source = DataSource()
+    get_data_source()
     allergies = ["dairy", "egg","soy","wheat","nuts","fish"]
     cnt = 0
     for allergy in allergies:
@@ -43,42 +52,42 @@ def get_calories_by_name(food):
     '''Arguments: name of the food(string)
     Return value: the calories column of the row that the food is in, or if it is not in the list, return a message
     Purpose: get calories of a specified food'''
-    data_source = DataSource()
+    get_data_source()
     if food_exist(food) == False:
         return False
     calorie = data_source.get_calorie_from_table(food)
     return calorie[0][0]
     
 
-#load the data from CFAfacts.csv
-def load_data():
-    '''Arguments: None
-    Return value: the whole data set, in the format of a dictionary
-    Purpose: load data for future function use'''
-    global data
+# #load the data from CFAfacts.csv
+# def load_data():
+#     '''Arguments: None
+#     Return value: the whole data set, in the format of a dictionary
+#     Purpose: load data for future function use'''
+#     global data
 
-    file = open("Data/CFAfacts.csv", encoding="utf-8")
+#     file = open("Data/CFAfacts.csv", encoding="utf-8")
 
-    for line in file:
-        line = line.strip()   #remove extra white space
-        fields = line.split(",")    #seperate elements in a line using comma
+#     for line in file:
+#         line = line.strip()   #remove extra white space
+#         fields = line.split(",")    #seperate elements in a line using comma
 
-        # Create a dictionary for each row
-        row = {
-                'Item': fields[0],
-                'Calories': fields[1],
-                'Dairy': fields[2],
-                'Egg': fields[3],
-                'Soy': fields[4],
-                'Wheat': fields[5],
-                'Tree Nuts': fields[6],
-                'Fish': fields[7]
-        }
+#         # Create a dictionary for each row
+#         row = {
+#                 'Item': fields[0],
+#                 'Calories': fields[1],
+#                 'Dairy': fields[2],
+#                 'Egg': fields[3],
+#                 'Soy': fields[4],
+#                 'Wheat': fields[5],
+#                 'Tree Nuts': fields[6],
+#                 'Fish': fields[7]
+#         }
 
-        data.append(row)
+#         data.append(row)
 
-    file.close() #close file
-    return data
+#     file.close() #close file
+#     return data
 
 
 #helper function for main
