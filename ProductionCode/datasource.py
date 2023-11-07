@@ -1,5 +1,6 @@
 import psycopg2
-from ProductionCode import psqlConfig as config
+# from ProductionCode import psqlConfig as config
+import psqlConfig as config
 
 class DataSource:
     connection = None; 
@@ -36,7 +37,7 @@ class DataSource:
             #set up a cursor
             cursor = self.connection.cursor()
             #make the query using %s as a placeholder for the variable
-            query = "SELECT * FROM teamg WHERE LOWER(food)=%s AND "+ allergy + " = 1"
+            query = "SELECT * FROM food_info WHERE LOWER(food)=%s AND "+ allergy + " = True"
 
 
             #executing the query and saying that the magnitude variable 
@@ -54,7 +55,7 @@ class DataSource:
             #set up a cursor
             cursor = self.connection.cursor()
             #make the query using %s as a placeholder for the variable
-            query = "SELECT calories FROM teamg WHERE LOWER(food)=%s"
+            query = "SELECT calories FROM food_info WHERE LOWER(food)=%s"
 
 
             #executing the query and saying that the magnitude variable 
@@ -72,7 +73,7 @@ class DataSource:
             #set up a cursor
             cursor = self.connection.cursor()
             #make the query using %s as a placeholder for the variable
-            query = "SELECT * FROM teamg WHERE LOWER(food)=%s"
+            query = "SELECT * FROM food_info WHERE LOWER(food)=%s"
 
 
             #executing the query and saying that the magnitude variable 
@@ -88,5 +89,5 @@ class DataSource:
 
 if __name__ == '__main__':
     my_source = DataSource()
-    print(my_source.food_exist("mato")) #prints out all rows with calorie less than 300
+    print(my_source.get_food_allergy("Sweet and Spicy Sriracha Sauce", "wheat")) #prints out all rows with calorie less than 300
    
