@@ -14,7 +14,7 @@ def get_calorie_by_food():
      '''display the calorie count of the food'''
      food = request.args['text_box']
      calorie = db.get_calories_by_name(food)
-     if calorie == "Sorry, the item you are searching for is not in the menu of Chick-fil-A.":
+     if calorie == False:
           return render_template("foodNotFoundPage.html")
      return render_template("calorie.html", food = food, count = calorie, num_present = round(100*(calorie/600), 2))
 
@@ -23,9 +23,10 @@ def get_diet():
      '''display the dietary restriction based on food'''
      food = request.args['text_box']
      food_list = food.split(",")
-     allergies = str(db.get_restriction(food_list))
-     if allergies == "Sorry, the item you are searching for is not in the menu of Chick-fil-A.":
+     allergies = db.get_restriction(food_list)
+     if allergies == False:
           return render_template("foodNotFoundPage.html")
+     allergies = str(allergies)
      return render_template("diet.html", food = food, allergies = allergies[1:-1])
 
 @app.route('/about')
