@@ -14,7 +14,7 @@ def get_restriction(food_list):
     allergies_sum = [0,0,0,0,0,0]
     for food in food_list:
         if food_exist(food) == False:
-            return "Sorry, the item you are searching for is not in the menu of Chick-fil-A."
+            return False
         get_restriction_item(food, allergies_sum)
     while 0 in allergies_sum:
         allergies_sum.remove(0)
@@ -45,9 +45,10 @@ def get_calories_by_name(food):
     Purpose: get calories of a specified food'''
     data_source = DataSource()
     if food_exist(food) == False:
-        return "Sorry, the item you are searching for is not in the menu of Chick-fil-A."
+        return False
     calorie = data_source.get_calorie_from_table(food)
     return calorie[0][0]
+    
 
 #load the data from CFAfacts.csv
 def load_data():
@@ -89,6 +90,8 @@ def msg_calories(argument):
         return usage_calories
     else:
         msg = get_calories_by_name(argument[2])
+        if msg == False:
+            return "Sorry, the item you are searching for is not in the menu of Chick-fil-A."
         return msg
 
 #helper function for main
@@ -100,6 +103,8 @@ def msg_diet(argument):
         return usage_diet
     else:
         msg = get_restriction(argument[2:])
+        if msg == False:
+            return "Sorry, the item you are searching for is not in the menu of Chick-fil-A."
         return msg
 
 #helper function for main
