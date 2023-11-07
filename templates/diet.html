@@ -12,8 +12,8 @@
             <li><a href="/contact">Contact us</a></li>
             </ul>
         </nav>
-            <h1>Search Result</h1>  
-            {% if allergies != "[]" %}
+            <h2>Search Result</h2>  
+            {% if allergies != "" %}
                 <p>{{food}} contain(s) the following allergies: {{ allergies }}</p> 
             {% else %}
                 <p>{{food}} contain(s) no allergies.</p>
