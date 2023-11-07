@@ -8,7 +8,8 @@ class DataSource:
         self.connection = self.connect()
 
     def connect(self):
-        '''establishes connection with database'''
+        '''Purpose: establishes connection with database
+        Returns: the connection'''
         try:
             connection = psycopg2.connect(database=config.database, user=config.user, password=config.password, host = "localhost")
         except Exception as e:
@@ -16,22 +17,23 @@ class DataSource:
             exit()
         return connection
     
-    def getAll(self):
-        '''return all data that's in the table teamg'''
-        #Open a cursor to perform database operations
-        cursor = self.connection.cursor()
+    # def getAll(self):
+    #     '''return all data that's in the table teamg, returns the result'''
+    #     #Open a cursor to perform database operations
+    #     cursor = self.connection.cursor()
 
-        #Execute a query
-        cursor.execute("SELECT * FROM teamg")
+    #     #Execute a query
+    #     cursor.execute("SELECT * FROM teamg")
 
-        #Retrieve query results
-        records = cursor.fetchall()
+    #     #Retrieve query results
+    #     records = cursor.fetchall()
 
-        return records
+    #     return records
     
     def get_food_allergy(self, food, allergy):
         '''Arguments: A single food and a single allergen
-        Purpose: Check if a food contains a specific allergen'''
+        Purpose: Check if a food contains a specific allergen
+        Return: tuples of the check result, or None when there is a problem in execution'''
         try:
             #set up a cursor
             cursor = self.connection.cursor()
@@ -49,7 +51,9 @@ class DataSource:
             return None
 
     def get_calorie_from_table(self, food_name):
-        '''Retrieve and return the calories of a specified food item.'''
+        '''Arguments: A single food and a single allergen
+        Purpose: Retrieve and return the calories of a specified food item.
+        Returns: a tuple of a calories result, or None when there is a problem in execution'''
         try:
             #set up a cursor
             cursor = self.connection.cursor()
@@ -67,7 +71,9 @@ class DataSource:
             return None
 
     def food_exist(self, food_name):
-        '''Retrieve and return whether a food exists in the table.'''
+        '''Arguments: A single food and a single allergen
+        Purpose: Retrieve and return whether a food exists in the table.
+        Returns: A boolean type of True/False, or None when there is a problem in execution'''
         try:
             #set up a cursor
             cursor = self.connection.cursor()
