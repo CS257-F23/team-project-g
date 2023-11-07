@@ -20,7 +20,7 @@ class DataSource:
     def get_food_allergy(self, food, allergy):
         '''Arguments: A single food and a single allergen
         Purpose: Check if a food contains a specific allergen
-        Return: tuples of the check result, or None when there is a problem in execution'''
+        Return: tuples of the check result, or None if the food contains no allergy'''
         try:
             cursor = self.connection.cursor()
             query = "SELECT food FROM food_info WHERE LOWER(food)=%s AND "+ allergy + " = True"
@@ -57,7 +57,7 @@ class DataSource:
             cursor.execute(query, (food_name.lower(), ))
 
             if cursor.fetchall() == []:
-                return False   
+                return False
             return True
 
         except Exception as e:
@@ -66,5 +66,5 @@ class DataSource:
 
 if __name__ == '__main__':
     my_source = DataSource()
-    print(my_source.get_food_allergy("Sweet and Spicy Sriracha Sauce", "wheat")) #prints out all rows with calorie less than 300
+    print(my_source.get_food_allergy("Sweet and Spicy Sriracha Sauce", "wheat")) 
    

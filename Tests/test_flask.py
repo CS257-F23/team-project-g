@@ -3,7 +3,6 @@ import unittest
 
 class Test_flask_html(unittest.TestCase):
     
-    #base case
     def test_home_page(self):
         '''check if app.py works for the homepage (route '/') '''
         self.app = app.test_client()
@@ -12,7 +11,6 @@ class Test_flask_html(unittest.TestCase):
         expected_pt = "Chick-fil-A Nutrition Guide"
         self.assertIn(expected_pt, response.data.decode('utf-8'))
 
-    #base case
     def test_calorie_route(self):
         '''check if app.py works for valid route for /calorie'''
         self.app = app.test_client()
@@ -21,7 +19,6 @@ class Test_flask_html(unittest.TestCase):
         expected = "270"
         self.assertIn(expected, response.data.decode('utf-8'))
 
-    #edge case
     def test_calorie_route_invalid(self):
         '''check if app.py works for valid route /calorie but invalid argument()'''
         self.app = app.test_client()
@@ -30,8 +27,7 @@ class Test_flask_html(unittest.TestCase):
         expected = "Sorry"
         self.assertIn(expected, response.data.decode('utf-8'))
 
-    #edge case
-    def test_calorie_invalid(self): #test for 404 error
+    def test_calorie_invalid(self):
         '''check if app.py works for invalid (non-existing) route, 404 page'''
         self.maxDiff = None
         self.app = app.test_client()
@@ -40,7 +36,6 @@ class Test_flask_html(unittest.TestCase):
         expected = "Oops"
         self.assertIn(expected, response.data.decode('utf-8'))
         
-    #base case
     def test_diet_route_valid(self):
         '''check if app.py works for valid route and argument for /diet'''
         self.app = app.test_client()
@@ -49,7 +44,6 @@ class Test_flask_html(unittest.TestCase):
         expected_pt = "dairy"
         self.assertIn(expected_pt, response.data.decode('utf-8'))
 
-    #edge case
     def test_diet_route_invalid(self):
         '''check if app.py works for valid route /diet but invalid argument()'''
         self.app = app.test_client()
