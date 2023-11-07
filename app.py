@@ -1,4 +1,4 @@
-import ProductionCode.basic_gd4 as db
+import basic_gd4 as db
 from flask import Flask, render_template, request
 
 app = Flask(__name__)

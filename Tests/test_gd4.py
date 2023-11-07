@@ -1,6 +1,6 @@
 import subprocess
 import unittest
-from ProductionCode.basic_gd4 import *
+from basic_gd4 import *
 
 #variables for usage statement
 usage_calories = ("Usage : python3 Production/basic_gd4.py -calories 'food'\n"
@@ -28,7 +28,7 @@ class Test_get_calories_by_name(unittest.TestCase):
     def test_get_calories_by_name_wrongfood(self):
         """Purpose: Check if get_calories_by_name() output warning for invalid food item."""
         food = "Charlie"
-        file_path = 'ProductionCode/basic_gd4.py' #path to the production code
+        file_path = 'basic_gd4.py' #path to the production code
         code = subprocess.Popen(['python3', file_path,'-calories', food], 
                                 stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                                 encoding='utf8') 
@@ -39,7 +39,7 @@ class Test_get_calories_by_name(unittest.TestCase):
     #base_case
     def test_get_calories_by_name_commandcorrect(self):
         """Purpose: Check if basic_gd4.py works for valid 'calories' command line arguments."""
-        file_path = 'ProductionCode/basic_gd4.py' #path to the production code
+        file_path = 'basic_gd4.py' #path to the production code
         code = subprocess.Popen(['python3', file_path,'-calories', 'Coffee'], 
                                 stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                                 encoding='utf8') 
@@ -51,7 +51,7 @@ class Test_get_calories_by_name(unittest.TestCase):
     #edge_case
     def test_get_calories_by_name_commanderror(self):
         """Purpose: Check if basic_gd4.py works for invalid '-calories' command line arguments"""
-        file_path = 'ProductionCode/basic_gd4.py' #path to the production code
+        file_path = 'basic_gd4.py' #path to the production code
         code = subprocess.Popen(['python3', file_path, '-calories'], 
                                 stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                                 encoding='utf8') 
@@ -62,7 +62,7 @@ class Test_get_calories_by_name(unittest.TestCase):
     #edge case
     def test_commanderror(self):
         """Purpose: Check if basic_gd4.py works for invalid command line arguments"""
-        file_path = 'ProductionCode/basic_gd4.py' #path to the production code
+        file_path = 'basic_gd4.py' #path to the production code
         expected = ("usage method not found, please use one of the usage method below: \n" 
                     + usage_calories + "\n" 
                     + usage_diet)
@@ -102,7 +102,7 @@ class Test_get_restriction(unittest.TestCase):
         food2 = "Garden Herb Ranch Dressing"
         option = "-diet"
         expected = "['dairy', 'egg', 'wheat']"
-        file_path = 'ProductionCode/basic_gd4.py' #path to the production code
+        file_path = 'basic_gd4.py' #path to the production code
         code = subprocess.Popen(['python3', file_path, option, food1, food2], 
                                 stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                                 encoding='utf8') 
@@ -116,7 +116,7 @@ class Test_get_restriction(unittest.TestCase):
         option = "-diet"
         food = "Silly"
         expected = "Sorry, the item you are searching for is not in the menu of Chick-fil-A."
-        file_path = 'ProductionCode/basic_gd4.py' #path to the production code
+        file_path = 'basic_gd4.py' #path to the production code
         code = subprocess.Popen(['python3', file_path, option, food], 
                                 stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                                 encoding='utf8') 
@@ -129,7 +129,7 @@ class Test_get_restriction(unittest.TestCase):
         """Purpose: Check if basic_gd4.py works for invalid command line arguments"""
         option = "-diet"
         expected = usage_diet
-        file_path = 'ProductionCode/basic_gd4.py' #path to the production code
+        file_path = 'basic_gd4.py' #path to the production code
         code = subprocess.Popen(['python3', file_path, option], 
                                 stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                                 encoding='utf8') 

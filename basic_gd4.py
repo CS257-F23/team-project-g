@@ -1,8 +1,5 @@
 import sys
-if __name__ == "__main__":
-    from datasource import DataSource
-else:
-    from ProductionCode.datasource import DataSource
+from ProductionCode.datasource import DataSource
 
 data = []
 usage_calories = ("Usage : python3 Production/basic_gd4.py -calories 'food'\n"
