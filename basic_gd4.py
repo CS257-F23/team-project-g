@@ -7,14 +7,23 @@ usage_calories = ("Usage : python3 Production/basic_gd4.py -calories 'food'\n"
 usage_diet = ("Usage : python3 Production/basic_gd4.py -diet 'food1' ['food2' ... ]\n"
             "Note: at least one food option is required after '-diet', multiple food items are valid as well")
 data_source = DataSource()
+data_source = None
+
+def get_data_source():
+    global data_source
+    if data_source is None:
+        data_source = DataSource()
+    return data_source
+
 
 def get_restriction(food_list):
     '''Arguments: a list of food
     Return value: a list of allergies, which includes all the allergens contained for the food list inputted.'''
+    get_data_source()
     allergies_sum = [0,0,0,0,0,0]
     for food in food_list:
         if food_exist(food) == False:
-            return "Sorry, the item you are searching for is not in the menu of Chick-fil-A."
+            return False
         get_restriction_item(food, allergies_sum)
     while 0 in allergies_sum:
         allergies_sum.remove(0)
@@ -47,39 +56,40 @@ def get_calories_by_name(food):
     Purpose: get calories of a specified food'''
     # data_source = DataSource()
     if food_exist(food) == False:
-        return "Sorry, the item you are searching for is not in the menu of Chick-fil-A."
+        return False
     calorie = data_source.get_calorie_from_table(food)
     return calorie[0][0]
+    
 
-#load the data from CFAfacts.csv
-def load_data():
-    '''Arguments: None
-    Return value: the whole data set, in the format of a dictionary
-    Purpose: load data for future function use'''
-    global data
+# #load the data from CFAfacts.csv
+# def load_data():
+#     '''Arguments: None
+#     Return value: the whole data set, in the format of a dictionary
+#     Purpose: load data for future function use'''
+#     global data
 
-    file = open("Data/CFAfacts.csv", encoding="utf-8")
+#     file = open("Data/CFAfacts.csv", encoding="utf-8")
 
-    for line in file:
-        line = line.strip()   #remove extra white space
-        fields = line.split(",")    #seperate elements in a line using comma
+#     for line in file:
+#         line = line.strip()   #remove extra white space
+#         fields = line.split(",")    #seperate elements in a line using comma
 
-        # Create a dictionary for each row
-        row = {
-                'Item': fields[0],
-                'Calories': fields[1],
-                'Dairy': fields[2],
-                'Egg': fields[3],
-                'Soy': fields[4],
-                'Wheat': fields[5],
-                'Tree Nuts': fields[6],
-                'Fish': fields[7]
-        }
+#         # Create a dictionary for each row
+#         row = {
+#                 'Item': fields[0],
+#                 'Calories': fields[1],
+#                 'Dairy': fields[2],
+#                 'Egg': fields[3],
+#                 'Soy': fields[4],
+#                 'Wheat': fields[5],
+#                 'Tree Nuts': fields[6],
+#                 'Fish': fields[7]
+#         }
 
-        data.append(row)
+#         data.append(row)
 
-    file.close() #close file
-    return data
+#     file.close() #close file
+#     return data
 
 
 #helper function for main
@@ -91,6 +101,8 @@ def msg_calories(argument):
         return usage_calories
     else:
         msg = get_calories_by_name(argument[2])
+        if msg == False:
+            return "Sorry, the item you are searching for is not in the menu of Chick-fil-A."
         return msg
 
 #helper function for main
@@ -102,6 +114,8 @@ def msg_diet(argument):
         return usage_diet
     else:
         msg = get_restriction(argument[2:])
+        if msg == False:
+            return "Sorry, the item you are searching for is not in the menu of Chick-fil-A."
         return msg
 
 #helper function for main

@@ -218,6 +218,5 @@ class Test_main_helper(unittest.TestCase):
         expected = "usage method not found, please use one of the usage method below: \n" + usage_calories + "\n" + usage_diet
         self.assertEqual(print_msg(command), expected)
 
-load_data()
 if __name__ == '__main__':
     unittest.main()
