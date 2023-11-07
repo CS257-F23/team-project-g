@@ -13,7 +13,7 @@
             </ul>
         </nav>
             <h2>Search Result</h2>  
-            {% if allergies != "" %}
+            {% if allergies != "[]" %}
                 <p>{{food}} contain(s) the following allergies: {{ allergies }}</p> 
             {% else %}
                 <p>{{food}} contain(s) no allergies.</p>
