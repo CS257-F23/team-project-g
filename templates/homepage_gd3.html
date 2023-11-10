@@ -28,14 +28,14 @@
         </nav>
         <div>
         <form id = "search" action="get_calorie" method="get">
-            <label for="option_select"></label>
-            <select name="option_select" id="option_select" onchange="placeholder_msg()">  <!-- source: https://www.w3schools.com/jsref/event_onchange.asp -->
+            <label for = "option_select">Choose a function:</label>
+            <select name = "option_select" id = "option_select" onchange = "placeholder_msg()">  <!-- source: https://www.w3schools.com/jsref/event_onchange.asp -->
                 <option value="Calorie">Calorie</option>
                 <option value="Allergy">Allergy</option> 
             </select>
-            <label for = "text_box"></label>
+            <label for = "text_box">Enter a food name:</label>
             <input type="text" id="text_box" name="text_box" placeholder="calorie count of one food: e.g Tomato" value="">  <!--source: https://www.w3schools.com/howto/howto_css_searchbar.asp */ -->
-            <label for = "search_button"></label>
+            <label for = "search_button">Press the button:</label>
             <input type="submit" value="Search &#128269;" id="search_button"  name = "search_button">
         </form>
         </div>
