@@ -28,17 +28,21 @@
         </nav>
         <div>
         <form id = "search" action="get_calorie" method="get">
-            <label for = "option_select">Choose a function:</label>
+            <label for = "option_select" class="visually-hidden">Search Option</label>
             <select name = "option_select" id = "option_select" onchange = "placeholder_msg()">  <!-- source: https://www.w3schools.com/jsref/event_onchange.asp -->
                 <option value="Calorie">Calorie</option>
                 <option value="Allergy">Allergy</option> 
             </select>
-            <label for = "text_box">Enter a food name:</label>
+            <label for = "text_box" class="visually-hidden">Food Name</label>
             <input type="text" id="text_box" name="text_box" placeholder="calorie count of one food: e.g Tomato" value="">  <!--source: https://www.w3schools.com/howto/howto_css_searchbar.asp */ -->
-            <label for = "search_button">Press the button:</label>
+            <label for = "search_button" class="visually-hidden">Search Button</label>
             <input type="submit" value="Search &#128269;" id="search_button"  name = "search_button">
         </form>
         </div>
+        <p id="explanatory">Welcome, you can discover the nutritional values and allergen information of Chick-fil-A items right here!
+            Our main feature on the hoempage is a search bar. You can select between Calorie and Allergy options using a dropdown. There will be placeholder text to guide you for searching.
+            The top navigation bar includes links to 'Home','About' and 'Contact Us', click on one of those for corresponding functionality.    
+        </p>
     </body>
 </html>
 
