@@ -1,0 +1,51 @@
+a.back {
+    text-decoration: none;
+    padding: 8px 16px;
+    background-color: white;
+    color: rgb(253, 136, 136);
+    border-radius: 10px; /* source : https://www.w3schools.com/cssref/css3_pr_border-radius.php*/ 
+    border: none; 
+}
+  
+a:hover {
+    background-color: rgb(208, 208, 208);
+}
+  
+p {
+    color: whitesmoke;
+    margin-top: 20%;
+    text-align: center;
+}
+
+body{
+    text-align: center;
+}
+
+html{
+    background-color: rgb(253, 136, 136);
+}
+
+nav ul {
+    border: 2px solid blue;
+    list-style-type: none;
+    overflow: hidden;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+nav li {
+    float: left;
+}
+
+nav li a {
+    display: block;
+    color: blue;
+    text-decoration: none;
+    text-align: center;
+    padding: 14px 16px;
+}
+
+nav li a:hover {
+    color: white;
+    background-color: blue;
+}
