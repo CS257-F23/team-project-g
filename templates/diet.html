@@ -12,8 +12,13 @@
             <li><a href="/contact">Contact us</a></li>
             </ul>
         </nav>
+<<<<<<< HEAD:templates/diet.html
             <h2>Search Result</h2>  
             {% if allergies != "" %}
+=======
+            <h1>Search Result</h1>  
+            {% if allergies != "[]" %}
+>>>>>>> c8b4e18fdddfb010f57b69f61c39c1c0f010903c:templates/diet_gd3.html
                 <p>{{food}} contain(s) the following allergies: {{ allergies }}</p> 
             {% else %}
                 <p>{{food}} contain(s) no allergies.</p>

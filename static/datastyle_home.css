@@ -10,7 +10,7 @@ h1 {
     text-align: center;
     margin-left: 30%;
     margin-right: 30%;
-    margin-top: 10%;
+    margin-top: 6%; 
     height: auto;
 }
 
@@ -69,4 +69,23 @@ nav li a {
 nav li a:hover {
     color: white;
     background-color: blue;
+}
+
+.visually-hidden { 
+    position: absolute; 
+    width: 1px; 
+    height: 1px; 
+    margin: -1px; 
+    padding: 0; 
+    overflow: hidden; 
+    border: 0; 
+    /* source: https://www.sitepoint.com/hide-elements-in-css/ */
+}
+
+#explanatory{
+    margin-top: 5%; 
+    width: 65%;
+    text-align: justify;
+    text-justify: inter-word;  /* source: https://www.w3schools.com/cssref/css3_pr_text-justify.php */
+    margin-left: 15%;
 }
