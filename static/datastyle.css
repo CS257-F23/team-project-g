@@ -14,44 +14,47 @@ h1 {
     height: auto;
 }
 
-div {
-    width : 99% ;
-    margin-left: 15%;
-    margin-top: 5%;    
-}
-
 select{
     width: 14%;
     height: var(--search_height);
-    color : rgb(103, 103, 103);
+    color : rgb(3,3,3);
     background-color: rgb(220, 219, 219);
     border-radius: 10px; /* source : https://www.w3schools.com/cssref/css3_pr_border-radius.php*/ 
     font-size: 90%; 
+    text-align: center;
 }
 
 #text_box{
     height : var(--search_height);
-    width : 40%;
+    width : 54%;
     font-size: 80%;
 }
 
 #search_button {
     width: 12%;
     height: var(--search_height);
-    background-color: rgb(253, 136, 136);
-    color: white;
+    background-color: rgb(220, 219, 219);
+    color: rgb(3, 3, 3);
     border-radius: 10px; /* source : https://www.w3schools.com/cssref/css3_pr_border-radius.php*/ 
-    border: none; 
+    font-size: 90%;
 }
 #search_button:hover{
-    background-color: rgb(253, 172, 172);
+    background-color: rgb(53, 195, 230);
     text-decoration: underline;
+}
+
+div {
+    width: 99%;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 nav ul {
     border: 2px solid blue;
     list-style-type: none;
     overflow: hidden;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 nav li {
@@ -82,10 +85,16 @@ nav li a:hover {
     /* source: https://www.sitepoint.com/hide-elements-in-css/ */
 }
 
-#explanatory{
-    margin-top: 5%; 
-    width: 65%;
+p {
+    margin-top: 1%;
+    width: 80%;
     text-align: justify;
     text-justify: inter-word;  /* source: https://www.w3schools.com/cssref/css3_pr_text-justify.php */
-    margin-left: 15%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+html {
+    background-color: rgb(255, 175, 193);
+
 }

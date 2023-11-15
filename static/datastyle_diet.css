@@ -6,20 +6,22 @@ a.back {
     color: white;
     border-radius: 10px; /* source : https://www.w3schools.com/cssref/css3_pr_border-radius.php*/ 
     border: none; 
-  }
+}
   
-  a:hover {
-     background-color: rgb(253, 172, 172);
-  }
+a:hover {
+    background-color: rgb(253, 172, 172);
+}
   
-  h2 {
-      text-decoration: none;
-  }
+h2 {
+    text-decoration: none;
+}
   
-  nav ul {
+nav ul {
     border: 2px solid blue;
     list-style-type: none;
     overflow: hidden;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 nav li {

@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>Search Result</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='datastyle_home.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='datastyle.css') }}">
         <script>
             function placeholder_msg() {
                 textBox = document.getElementById('text_box');
@@ -9,10 +9,10 @@
                 option_selected = document.getElementById('option_select');  /* source: https://www.geeksforgeeks.org/how-to-get-selected-value-in-dropdown-list-using-javascript/ */
                 if (option_selected.value == 'Calorie') {
                     action_item.action = "get_calorie";
-                    textBox.placeholder = 'calorie count of one food: e.g Tomato';
+                    textBox.placeholder = 'e.g. Crispy Bell Peppers';
                 } else if (option_selected.value == 'Allergy') {
                     action_item.action = "get_diet";
-                    textBox.placeholder = 'e.g Tomato,Coffee ("," between foods, at least one)';
+                    textBox.placeholder = 'e.g. Bacon OR Tomato,Coffee,Sausage';
                 }
             }
         </script>
@@ -34,14 +34,23 @@
                 <option value="Allergy">Allergy</option> 
             </select>
             <label for = "text_box" class="visually-hidden">Food Name</label>
-            <input type="text" id="text_box" name="text_box" placeholder="calorie count of one food: e.g Tomato" value="">  <!--source: https://www.w3schools.com/howto/howto_css_searchbar.asp */ -->
+            <input type="text" id="text_box" name="text_box" placeholder="e.g. Crispy Bell Peppers" value="">  <!--source: https://www.w3schools.com/howto/howto_css_searchbar.asp */ -->
             <label for = "search_button" class="visually-hidden">Search Button</label>
             <input type="submit" value="Search &#128269;" id="search_button"  name = "search_button">
         </form>
         </div>
-        <p id="explanatory">Welcome, you can discover the nutritional values and allergen information of Chick-fil-A items right here!
-            Our main feature on the hoempage is a search bar. You can select between Calorie and Allergy options using a dropdown. There will be placeholder text to guide you for searching.
-            The top navigation bar includes links to 'Home','About' and 'Contact Us', click on one of those for corresponding functionality.    
+
+        <p>
+            Look through the official menu (<a href="https://www.chick-fil-a.com/menu" target="_blank">link here</a>) and find food you are interested in.
+            Disclaimer: Our database contains menu items listed as of August 19, 2022.
+        </p>
+        <p>
+            Are you curious about the calories of each food you are going to eat or have eaten today? 
+            Try the "Calorie" function by switching the dropdown into "Calorie". Type a food name and click on the "Search" button to see a predicted calorie count of it.
+        </p>
+        <p>
+            Do you have any food restrictions? Try the "Allergy" function by switching the dropdown into "Allergy". 
+            Type a food name or several food names seperated by comma and click on the "Search" button to see all the allergens contained by them.
         </p>
     </body>
 </html>
