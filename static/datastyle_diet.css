@@ -42,9 +42,16 @@ nav li a:hover {
 }
 
 
-div{
+.allergy{
     position: relative; 
     margin-left: 10%;
     font-size: large;
 }
 
+.box{
+    margin-top: 1%;
+    background-color: rgb(255, 212, 219);
+    width: 40%;
+    border: 2px solid rgb(255, 146, 150);
+    padding: 10px;
+}

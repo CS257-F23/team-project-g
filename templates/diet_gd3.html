@@ -13,14 +13,63 @@
             <li><a href="/contact">Contact us</a></li>
             </ul>
         </nav>
-        <div>
+        <div class = "allergy">
             {% if allergies %}
-                <p>{{food}} contain(s) no allergies.</p>            
+                <p>{{ food }} contain(s) the following allergen(s): </p>
+                    {% for allergy in allergies %}
+                        {% if allergy == "Dairy" %}
+                            <div class="box">
+                                <p>Dairy</p>
+                                <p>
+                                    <a href="https://www.foodallergy.org/living-food-allergies/food-allergy-essentials/common-allergens/milk">Learn more</a>
+                                </p>
+                            </div>
+                        {% endif %}
+                        {% if allergy == "Egg" %}
+                            <div class="box">
+                                <p>Egg</p>
+                                <p>
+                                    <a href="https://www.foodallergy.org/living-food-allergies/food-allergy-essentials/common-allergens/egg">Learn more</a>
+                                </p>
+                            </div>
+                        {% endif %}
+                        {% if allergy == "Soy" %}
+                            <div class="box">
+                                <p>Soy</p>
+                                <p>
+                                    <a href="https://www.foodallergy.org/living-food-allergies/food-allergy-essentials/common-allergens/soy">Learn more</a>
+                                </p>
+                            </div>
+                        {% endif %} 
+                        {% if allergy == "Wheat" %}
+                            <div class="box">
+                                <p>Wheat</p>
+                                <p>
+                                    <a href="https://www.foodallergy.org/living-food-allergies/food-allergy-essentials/common-allergens/wheat">Learn more </a>
+                                </p>
+                            </div>
+                        {% endif %} 
+                        {% if allergy == "Tree Nuts" %}
+                            <div class="box">
+                                <p>Tree Nuts</p>
+                                <p>
+                                    <a href="https://www.foodallergy.org/living-food-allergies/food-allergy-essentials/common-allergens/tree-nut">Learn more </a>
+                                </p>
+                            </div>
+                        {% endif %}
+                        {% if allergy == "Fish" %}
+                            <div class="box">
+                                <p>Fish</p>
+                                <p>
+                                    <a href="https://www.foodallergy.org/living-food-allergies/food-allergy-essentials/common-allergens/fish">Learn more</a>
+                                </p>
+                            </div>
+                        {% endif %}  
+                    {% endfor %}
             {% else %}
-                <p>shit</p>
+                <p>{{food}} contain(s) no allergens.</p>
             {% endif %}
-        </div>
-        
+        </div>        
     </body> 
 
 </html>
