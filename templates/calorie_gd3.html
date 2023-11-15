@@ -8,11 +8,12 @@
     <style>
         .piechart{
             background-image: conic-gradient(  
-                pink {{360*(count/600)}}deg,    
+                rgb(255, 89, 0) {{360*(count/600)}}deg,    
                 orange 0); 
         } 
     </style>
     <body> 
+        <h1>Search Result</h1>
         <nav>
             <ul>
             <li><a href="/">Home</a></li>
@@ -20,16 +21,17 @@
             <li><a href="/contact">Contact us</a></li>
             </ul>
         </nav>
-        <h1>Search Result</h1>
-        <p>{{food}} has calorie count of <b>{{count}}</b>.</p>
-        <p>As percentage of recommended adult meal calories(600cal): <b> {{ num_present }}%</b>.</p> 
-        <div class="piechart" alt="pie chart" ></div>
-        <div class="key">
-            <p class="key-title">Keys:</p>
-            <div class="pink"></div>
-            <p>Calorie of your food</p>
-            <div class="orange"></div>
-            <p>Recommended Calorie Left</p>
+        <div class = "info">
+            <p>{{food}} has calorie count of <b>{{count}}</b>.</p>
+            <p>As percentage of recommended adult meal calories(600cal): <b> {{ num_present }}%</b>.</p> 
+            <div class="piechart" alt="pie chart" ></div>
+            <div class="key">
+                <p class="key-title">Keys:</p>
+                <div class="pink"></div>
+                <p>Calorie of your food</p>
+                <div class="orange"></div>
+                <p>Recommended Calorie Left</p>
+            </div>
         </div>
     </body> 
 

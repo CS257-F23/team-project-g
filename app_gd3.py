@@ -26,10 +26,11 @@ def get_diet():
      cl.load_data()
      food = request.args['text_box']
      food_list = food.split(",")
-     allergies = str(cl.get_restriction(food_list))
+     allergy_list = cl.get_restriction(food_list)
+     allergies = str(allergy_list)
      if allergies == "Sorry, the item you are searching for is not in the menu of Chick-fil-A.":
           return render_template("foodNotFoundPage_gd3.html")
-     return render_template("diet_gd3.html", food = food, allergies = allergies)
+     return render_template("diet_gd3.html", food = food, allergies = allergy_list)
 
 @app.route('/about')
 def aboutpage():
