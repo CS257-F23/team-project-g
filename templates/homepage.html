@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title>Search Result</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='datastyle_home.css') }}">
+        <script>
+            function placeholder_msg() {
+                textBox = document.getElementById('text_box');
+                action_item = document.getElementById("search");
+                option_selected = document.getElementById('option_select');  /* source: https://www.geeksforgeeks.org/how-to-get-selected-value-in-dropdown-list-using-javascript/ */
+                if (option_selected.value == 'Calorie') {
+                    action_item.action = "get_calorie";
+                    textBox.placeholder = 'calorie count of one food: e.g Tomato';
+                } else if (option_selected.value == 'Allergy') {
+                    action_item.action = "get_diet";
+                    textBox.placeholder = 'e.g Tomato,Coffee ("," between foods, at least one)';
+                }
+            }
+        </script>
+    </head>
+    <body> 
+        <h1>Chick-fil-A Nutrition Guide</h1>
+        <nav>
+            <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact us</a></li>
+            </ul>
+        </nav>
+        <div>
+        <form id = "search" action="get_calorie" method="get">
+            <label for="option_select"></label>
+            <select name="option_select" id="option_select" onchange="placeholder_msg()">  <!-- source: https://www.w3schools.com/jsref/event_onchange.asp -->
+                <option value="Calorie">Calorie</option>
+                <option value="Allergy">Allergy</option> 
+            </select>
+            <label for = "text_box"></label>
+            <input type="text" id="text_box" name="text_box" placeholder="calorie count of one food: e.g Tomato" value="">  <!--source: https://www.w3schools.com/howto/howto_css_searchbar.asp */ -->
+            <label for = "search_button"></label>
+            <input type="submit" value="Search &#128269;" id="search_button"  name = "search_button">
+        </form>
+        </div>
+    </body>
+</html>
+

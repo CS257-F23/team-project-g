@@ -6,17 +6,25 @@ a.back {
     color: white;
     border-radius: 10px; /* source : https://www.w3schools.com/cssref/css3_pr_border-radius.php*/ 
     border: none; 
-  }
+}
   
-  a:hover {
-     background-color: rgb(253, 172, 172);
-  }
+a:hover {
+    background-color: rgb(253, 172, 172);
+}
   
-  h2 {
-      text-decoration: none;
-  }
-  
-  nav ul {
+h1 {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    background-color: rgb(248, 71, 71);
+    color: white;
+    text-align: center;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 10%;
+    height: auto;
+}
+
+nav ul {
     border: 2px solid blue;
     list-style-type: none;
     overflow: hidden;
@@ -38,3 +46,4 @@ nav li a:hover {
     color: white;
     background-color: blue;
 }
+
