@@ -6,6 +6,7 @@ usage_calories = ("Usage : python3 basic_cl.py -calories 'food'\n"
 usage_diet = ("Usage : python3 basic_cl.py -diet 'food1' ['food2' ... ]\n"
             "Note: at least one food option is required after '-diet', multiple food items are valid as well")
     
+control = core.Controller()
 
 def msg_calories(argument):
     '''Arguments: a list of command line arguments for calories function
@@ -14,7 +15,7 @@ def msg_calories(argument):
     if len(argument) != 3:
         return usage_calories
     else:
-        msg = core.get_calories_by_name(argument[2])
+        msg = control.get_calories_by_name(argument[2])
         if type(msg) is bool and msg == False :
             return "Sorry, the item you are searching for is not in the menu of Chick-fil-A."
         return msg
@@ -26,7 +27,7 @@ def msg_diet(argument):
     if len(argument) <= 2:
         return usage_diet
     else:
-        msg = core.get_restriction(argument[2:])
+        msg = control.get_restriction(argument[2:])
         if msg == False:
             return "Sorry, the item you are searching for is not in the menu of Chick-fil-A."
         return msg

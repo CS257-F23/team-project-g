@@ -3,7 +3,7 @@ from flask import Flask, render_template, request
 
 
 app = Flask(__name__)
-
+control = core.Controller()
 
 @app.route('/')
 def homepage():
@@ -14,7 +14,7 @@ def homepage():
 def get_calorie_by_food():
      '''display the calorie count of the food'''
      food = request.args['text_box']
-     calorie = core.get_calories_by_name(food)
+     calorie = control.get_calories_by_name(food)
      if type(calorie) is bool and calorie == False:
           return render_template("foodNotFoundPage.html")
      return render_template("calorie.html", food = food, count = calorie, num_present = round(100*(calorie/600), 2))
@@ -24,7 +24,7 @@ def get_diet():
      '''display the dietary restriction based on food'''
      food = request.args['text_box']
      food_list = food.split(",")
-     allergies = core.get_restriction(food_list)
+     allergies = control.get_restriction(food_list)
      if allergies == False:
           return render_template("foodNotFoundPage.html")
      return render_template("diet.html", food = food, allergies = allergies)

@@ -7,18 +7,19 @@ usage_calories = ("Usage : python3 basic_cl.py -calories 'food'\n"
         "Note: only one food option is required after '-calories', food name of multiple words shoule be put in quotes")
 usage_diet = ("Usage : python3 basic_cl.py -diet 'food1' ['food2' ... ]\n"
         "Note: at least one food option is required after '-diet', multiple food items are valid as well")
+control = core.Controller()
 
 class Test_get_calories_by_name(unittest.TestCase):
     
     def test_get_calories_by_name_allcorrect1(self):
         """Purpose: Check if get_calories_by_name works for valid food item."""
-        calories=core.get_calories_by_name('Coffee')
+        calories = control.get_calories_by_name('Coffee')
         expected = 0
         self.assertEqual(calories, expected)
     
     def test_get_calories_by_name_capitalerror(self):
         """Purpose: Check if get_calories_by_name() works for valid food item with wrong capitalizaton."""
-        calories=core.get_calories_by_name('PEAch Milkshake')
+        calories = control.get_calories_by_name('PEAch Milkshake')
         expected = 590
         self.assertEqual(calories, expected)
     
@@ -72,19 +73,19 @@ class Test_get_restriction(unittest.TestCase):
         """Purpose: Check if get_restriction() works for a list with one valid food item"""
         food = ["Crispy Bell Peppers"]
         expected = ["wheat"]
-        self.assertCountEqual(core.get_restriction(food),expected)
+        self.assertCountEqual(control.get_restriction(food),expected)
     
     def test_get_restriction_two_food(self):
         """Purpose: Check if get_restriction() works for a list with two valid food items"""
         food = ["Crispy Bell Peppers", "Garden Herb Ranch Dressing"]
         expected = ["dairy", "egg", "wheat"]
-        self.assertCountEqual(core.get_restriction(food),expected)
+        self.assertCountEqual(control.get_restriction(food),expected)
 
     def test_get_restriction_five_food(self):
         """Purpose: Check if get_restriction() works for a list with five valid food items"""
         food = ["Crispy Bell Peppers", "Garden Herb Ranch Dressing","Roasted Nut Blend", "5 Ct Nuggets Kid's Meal", "Tomato"]
         expected = ["dairy", "egg", "wheat", "nuts"]
-        self.assertCountEqual(core.get_restriction(food),expected)
+        self.assertCountEqual(control.get_restriction(food),expected)
 
     def test_get_restriction_main_basic(self):
         """Purpose: Check if basic_cl.py works for valid command line arguments"""
