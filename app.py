@@ -27,8 +27,7 @@ def get_diet():
      allergies = core.get_restriction(food_list)
      if allergies == False:
           return render_template("foodNotFoundPage.html")
-     allergies = str(allergies)
-     return render_template("diet.html", food = food, allergies = allergies[1:-1])
+     return render_template("diet.html", food = food, allergies = allergies)
 
 @app.route('/about')
 def aboutpage():

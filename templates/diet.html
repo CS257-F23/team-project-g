@@ -17,7 +17,7 @@
             {% if allergies %}
                 <p>{{ food }} contain(s) the following allergen(s): </p>
                     {% for allergy in allergies %}
-                        {% if allergy == "Dairy" %}
+                        {% if allergy == "dairy" %}
                             <div class="box">
                                 <p>Dairy</p>
                                 <p>
@@ -25,7 +25,7 @@
                                 </p>
                             </div>
                         {% endif %}
-                        {% if allergy == "Egg" %}
+                        {% if allergy == "egg" %}
                             <div class="box">
                                 <p>Egg</p>
                                 <p>
@@ -33,7 +33,7 @@
                                 </p>
                             </div>
                         {% endif %}
-                        {% if allergy == "Soy" %}
+                        {% if allergy == "soy" %}
                             <div class="box">
                                 <p>Soy</p>
                                 <p>
@@ -41,7 +41,7 @@
                                 </p>
                             </div>
                         {% endif %} 
-                        {% if allergy == "Wheat" %}
+                        {% if allergy == "wheat" %}
                             <div class="box">
                                 <p>Wheat</p>
                                 <p>
@@ -49,7 +49,7 @@
                                 </p>
                             </div>
                         {% endif %} 
-                        {% if allergy == "Tree Nuts" %}
+                        {% if allergy == "nuts" %}
                             <div class="box">
                                 <p>Tree Nuts</p>
                                 <p>
@@ -57,7 +57,7 @@
                                 </p>
                             </div>
                         {% endif %}
-                        {% if allergy == "Fish" %}
+                        {% if allergy == "fish" %}
                             <div class="box">
                                 <p>Fish</p>
                                 <p>
