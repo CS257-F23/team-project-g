@@ -2,6 +2,11 @@
     --search_height : 10%;
   }
 
+html{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: rgb(255, 175, 193);
+}
+
 h1 {
     padding-top: 1em;
     padding-bottom: 1em;
@@ -13,6 +18,33 @@ h1 {
     margin-top: 6%; 
     height: auto;
 }
+
+
+nav ul {
+    border: 2px solid rgb(255, 46, 46);
+    list-style-type: none;
+    overflow: hidden;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+nav li {
+    float: left;
+}
+
+nav li a {
+    display: block;
+    color: rgb(255, 46, 46);
+    text-decoration: none;
+    text-align: center;
+    padding: 14px 16px;
+}
+
+nav li a:hover {
+    color: white;
+    background-color: rgb(255, 46, 46);
+}
+
 
 select{
     width: 14%;
@@ -43,35 +75,10 @@ select{
     text-decoration: underline;
 }
 
-div {
+#search_bar {
     width: 99%;
     margin-left: 10%;
     margin-right: 10%;
-}
-
-nav ul {
-    border: 2px solid blue;
-    list-style-type: none;
-    overflow: hidden;
-    margin-left: 10%;
-    margin-right: 10%;
-}
-
-nav li {
-    float: left;
-}
-
-nav li a {
-    display: block;
-    color: blue;
-    text-decoration: none;
-    text-align: center;
-    padding: 14px 16px;
-}
-
-nav li a:hover {
-    color: white;
-    background-color: blue;
 }
 
 .visually-hidden { 
@@ -85,20 +92,16 @@ nav li a:hover {
     /* source: https://www.sitepoint.com/hide-elements-in-css/ */
 }
 
-p {
+.box{
     margin-top: 1%;
-    width: 80%;
-    text-align: justify;
-    text-justify: inter-word;  /* source: https://www.w3schools.com/cssref/css3_pr_text-justify.php */
+    background-color: rgb(255, 212, 219);
+    width: 79%;
+    border: 2px solid rgb(255, 146, 150);
+    padding: 10px;
     margin-left: 10%;
-    margin-right: 10%;
 }
 
-html{
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
-}
-
-html {
-    background-color: rgb(255, 175, 193);
-
+.explanatory_text{
+    margin-left: 10%;
+    width: 80%;
 }

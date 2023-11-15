@@ -14,10 +14,10 @@
             </ul>
         </nav>
         <div>
-            {% if allergies != "[]" %}
-                <p>{{food}} contain(s) the following allergies: {{ allergies }}</p> 
+            {% if allergies %}
+                <p>{{food}} contain(s) no allergies.</p>            
             {% else %}
-                <p>{{food}} contain(s) no allergies.</p>
+                <p>shit</p>
             {% endif %}
         </div>
         
