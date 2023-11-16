@@ -63,7 +63,22 @@ class DataSource:
         except Exception as e:
             print ("Something went wrong when executing the query: ", e)
             return None
+        
+    def get_food_list(self):
+        '''Arguments: None
+        Purpose: Retrieve and return all the food in the table.
+        Returns: A list of food'''
+        try:
+            cursor = self.connection.cursor()
+            query = "SELECT food FROM food_info"
+            cursor.execute(query)
 
+            cursor.fetchall()
+
+        except Exception as e:
+            print ("Something went wrong when executing the query: ", e)
+            return None
+        
 if __name__ == '__main__':
     my_source = DataSource()
     print(my_source.get_food_allergy("Sweet and Spicy Sriracha Sauce", "wheat")) 

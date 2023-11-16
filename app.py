@@ -20,7 +20,7 @@ def get_calorie_by_food():
      return render_template("calorie.html", food = food, count = calorie, num_present = round(100*(calorie/600), 2))
 
 @app.route('/get_diet', strict_slashes=False)
-def get_diet():  
+def get_diet():
      '''display the dietary restriction based on food'''
      food = request.args['text_box']
      food_list = food.split(",")
@@ -38,6 +38,12 @@ def aboutpage():
 def contactpage():
      '''renders html for the contact page'''
      return render_template("contact.html")
+
+@app.route('/menu')
+def contactpage():
+     '''displays all the food in the database that the users can search for'''
+     food_list = control.get_food_list()
+     return render_template("menu.html", food_list = food_list)
 
 @app.errorhandler(404)
 def page_not_found(e):
