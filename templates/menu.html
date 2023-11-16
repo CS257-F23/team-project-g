@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Contact Us</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='datastyle.css') }}">
+    </head>
+    <body> 
+        <h1>Menu List</h1>
+        <nav>
+            <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact us</a></li>
+            <li><a href="/menu">Menu</a></li>
+            </ul>
+        </nav>
+        <div>
+            <ul>
+                {% for food in food_list %}
+                    <li>{{ food }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Oops, food not found</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='datastyle_notFound.css') }}">
+    </head> 
+
+    <body>
+        <h1>Search Error</h1>
+        <nav>
+            <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact us</a></li>
+            <li><a href="/menu">Menu</a></li>
+            </ul>
+        </nav>
+        <p>Sorry, the item(s) you are searching for is not in the menu of Chick-fil-A.</p>
+        <p>
+            Look through the official menu (<a href="/menu">link here</a>) and find food you are interested in.
+            Disclaimer: Our database contains menu items listed as of August 19, 2022.
+        </p>
+    </body> 
+
+</html>

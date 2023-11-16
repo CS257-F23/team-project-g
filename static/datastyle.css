@@ -1,0 +1,111 @@
+:root {
+    --search_height : 10%;
+  }
+
+html{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: rgb(255, 175, 193);
+}
+
+h1 {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    background-color: rgb(248, 71, 71);
+    color: white;
+    text-align: center;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 6%; 
+    height: auto;
+}
+
+nav ul {
+    border: 2px solid rgb(255, 46, 46);
+    list-style-type: none;
+    overflow: hidden;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+nav li {
+    float: left;
+}
+
+nav li a {
+    display: block;
+    color: rgb(255, 46, 46);
+    text-decoration: none;
+    text-align: center;
+    padding: 14px 16px;
+}
+
+nav li a:hover {
+    color: white;
+    background-color: rgb(255, 46, 46);
+}
+
+
+select{
+    width: 14%;
+    height: var(--search_height);
+    color : rgb(3,3,3);
+    background-color: rgb(220, 219, 219);
+    border-radius: 10px; /* source : https://www.w3schools.com/cssref/css3_pr_border-radius.php*/ 
+    font-size: 90%; 
+    text-align: center;
+}
+
+#text_box{
+    height : var(--search_height);
+    width : 54%;
+    font-size: 80%;
+}
+
+#search_button {
+    width: 12%;
+    height: var(--search_height);
+    background-color: rgb(220, 219, 219);
+    color: rgb(3, 3, 3);
+    border-radius: 10px; /* source : https://www.w3schools.com/cssref/css3_pr_border-radius.php*/ 
+    font-size: 90%;
+}
+#search_button:hover{
+    background-color: rgb(53, 195, 230);
+    text-decoration: underline;
+}
+
+#search_bar {
+    width: 99%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.visually-hidden { 
+    position: absolute; 
+    width: 1px; 
+    height: 1px; 
+    margin: -1px; 
+    padding: 0; 
+    overflow: hidden; 
+    border: 0; 
+    /* source: https://www.sitepoint.com/hide-elements-in-css/ */
+}
+
+.box{
+    margin-top: 1%;
+    background-color: rgb(255, 212, 219);
+    width: 79%;
+    border: 2px solid rgb(255, 146, 150);
+    padding: 10px;
+    margin-left: 10%;
+}
+
+div{
+    margin-left: 8.5%;
+    width: 80%;
+}
+
+.explanatory_text{
+    margin-left: 10%;
+    width: 80%;
+}

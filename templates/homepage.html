@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <title>Chick-fil-A Nutrition Guide</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='datastyle.css') }}">
+        <script>
+            function placeholder_msg() {
+                textBox = document.getElementById('text_box');
+                action_item = document.getElementById("search");
+                option_selected = document.getElementById('option_select');  /* source: https://www.geeksforgeeks.org/how-to-get-selected-value-in-dropdown-list-using-javascript/ */
+                if (option_selected.value == 'Calorie') {
+                    action_item.action = "get_calorie";
+                    textBox.placeholder = 'e.g. Crispy Bell Peppers (see below for detailed instructions)';
+                } else if (option_selected.value == 'Allergy') {
+                    action_item.action = "get_diet";
+                    textBox.placeholder = 'e.g. Bacon OR Tomato,1% Milk,Spicy Filet (p.s no space after comma, see below for detailed instructions)';
+                }
+            }
+        </script>
+    </head>
+    <body> 
+        <h1>Chick-fil-A Nutrition Guide</h1>
+        <nav>
+            <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact us</a></li>
+            <li><a href="/menu">Menu</a></li>
+            </ul>
+        </nav>
+        <div id="search_bar">
+            <form id = "search" action="get_calorie" method="get">
+                <label for = "option_select" class="visually-hidden">Search Option</label>
+                <select name = "option_select" id = "option_select" onchange = "placeholder_msg()">  <!-- source: https://www.w3schools.com/jsref/event_onchange.asp -->
+                    <option value="Calorie">Calorie</option>
+                    <option value="Allergy">Allergy</option> 
+                </select>
+                <label for = "text_box" class="visually-hidden">Food Name</label>
+                <input type="text" id="text_box" name="text_box" placeholder="e.g. Crispy Bell Peppers" value="">  <!--source: https://www.w3schools.com/howto/howto_css_searchbar.asp */ -->
+                <label for = "search_button" class="visually-hidden">Search Button</label>
+                <input type="submit" value="Search &#128269;" id="search_button"  name = "search_button">
+            </form>
+        </div>
+
+        <div class="box">
+            <h2 id="menu_list">List of Menu Items</h2>
+            <p>
+                Look through the official menu (<a href="/menu">link here</a>) and find food you are interested in.
+                Disclaimer: Our database contains menu items listed as of August 19, 2022.
+            </p>
+        </div>
+        <div class="box">
+            <h2 id="calorie_instruction">Feature One: Calorie Search</h2>
+            <p>
+                Are you curious about the calories of each food you are going to eat or have eaten today? 
+                Try the "Calorie" function by switching the dropdown into "Calorie". Type a food name and click on the "Search" button to see a predicted calorie count of it.
+            </p>
+        </div>
+        <div class="box">
+            <h2 id="allergy_instruction">Feature Two: Allergy Search</h2>
+            <p>
+                Do you have any food restrictions? Try the "Allergy" function by switching the dropdown into "Allergy". 
+                Type a food name or several food names seperated by comma (NO SPACE after ',') and click on the "Search" button to see all the allergens contained by them.
+            </p>
+        </div>
+    </body>
+</html>
+
