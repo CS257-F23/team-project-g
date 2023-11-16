@@ -50,3 +50,15 @@ class Controller:
             return False
         calorie = self.data_source.get_calorie_from_table(food)
         return calorie[0][0]
+    
+    def get_food_list(self):
+        '''Arguments: None
+        Return value: (list) a list of all the food in the database
+        Purpose: get a list of all the food in the database'''
+        food_list = self.data_source.get_food_list()
+        index = 0
+        for food in food_list:
+            food = str(food)
+            food_list[index] = food[2:-3]
+            index += 1
+        return food_list
