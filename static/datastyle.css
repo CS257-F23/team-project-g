@@ -19,7 +19,6 @@ h1 {
     height: auto;
 }
 
-
 nav ul {
     border: 2px solid rgb(255, 46, 46);
     list-style-type: none;
@@ -99,6 +98,11 @@ select{
     border: 2px solid rgb(255, 146, 150);
     padding: 10px;
     margin-left: 10%;
+}
+
+div{
+    margin-left: 8.5%;
+    width: 80%;
 }
 
 .explanatory_text{
