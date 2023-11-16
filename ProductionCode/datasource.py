@@ -23,7 +23,7 @@ class DataSource:
         Return: tuples of the check result, or None if the food contains no allergy'''
         try:
             cursor = self.connection.cursor()
-            query = "SELECT food FROM food_info WHERE LOWER(food)=%s AND "+ allergy + " = True"
+            query = "SELECT food FROM food_information WHERE LOWER(food)=%s AND "+ allergy + " = True"
             cursor.execute(query, (food.lower(), ))
 
             return cursor.fetchall()
@@ -38,7 +38,7 @@ class DataSource:
         Returns: a tuple of a calories result, or None when there is a problem in execution'''
         try:
             cursor = self.connection.cursor()
-            query = "SELECT calories FROM food_info WHERE LOWER(food)=%s"
+            query = "SELECT calories FROM food_information WHERE LOWER(food)=%s"
             cursor.execute(query, (food_name.lower(), ))
 
             return cursor.fetchall()
@@ -53,7 +53,7 @@ class DataSource:
         Returns: A boolean type of True/False, or None when there is a problem in execution'''
         try:
             cursor = self.connection.cursor()
-            query = "SELECT food FROM food_info WHERE LOWER(food)=%s"
+            query = "SELECT food FROM food_information WHERE LOWER(food)=%s"
             cursor.execute(query, (food_name.lower(), ))
 
             if cursor.fetchall() == []:
@@ -70,7 +70,7 @@ class DataSource:
         Returns: A list of food'''
         try:
             cursor = self.connection.cursor()
-            query = "SELECT food FROM food_info"
+            query = "SELECT food FROM food_information"
             cursor.execute(query)
 
             return cursor.fetchall()

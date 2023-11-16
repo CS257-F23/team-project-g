@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS food_info;
-CREATE TABLE food_info(
+DROP TABLE IF EXISTS food_information;
+CREATE TABLE food_information(
   food text,
   calories int,
   dairy boolean,
