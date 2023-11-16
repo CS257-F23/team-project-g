@@ -40,7 +40,7 @@ def contactpage():
      return render_template("contact.html")
 
 @app.route('/menu')
-def contactpage():
+def menupage():
      '''displays all the food in the database that the users can search for'''
      food_list = control.get_food_list()
      return render_template("menu.html", food_list = food_list)
