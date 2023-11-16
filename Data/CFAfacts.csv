@@ -1,3 +1,4 @@
+Item,Calories,Dairy,Egg,Soy,Wheat,Tree Nuts,Fish
 5 Ct Nuggets Kid's Meal,160,1,1,0,1,0,0
 2 Ct Chick-n-Strips® Kid's Meal,200,1,1,0,1,0,0
 5 Ct Grilled Nuggets Kid's Meal,80,0,0,0,0,0,0
@@ -42,18 +43,18 @@ Large Chick-fil-A® Lemonade,300,0,0,0,0,0,0
 Small Chick-fil-A® Diet Lemonade,30,0,0,0,0,0,0
 Medium Chick-fil-A® Diet Lemonade,50,0,0,0,0,0,0
 Large Chick-fil-A® Diet Lemonade,80,0,0,0,0,0,0
-"Small Sunjoy® (1/2 Sweet Tea, 1/2 Lemonade)",120,0,0,0,0,0,0
-"Medium Sunjoy® (1/2 Sweet Tea, 1/2 Lemonade)",170,0,0,0,0,0,0
-"Large Sunjoy® (1/2 Sweet Tea, 1/2 Lemonade)",260,0,0,0,0,0,0
-"Small Sunjoy® (1/2 Sweet Tea, 1/2 Diet Lemonade)",80,0,0,0,0,0,0
-"Medium Sunjoy® (1/2 Sweet Tea, 1/2 Diet Lemonade)",100,0,0,0,0,0,0
-"Large Sunjoy® (1/2 Sweet Tea, 1/2 Diet Lemonade)",140,0,0,0,0,0,0
-"Small Sunjoy® (1/2 Unsweet Tea, 1/2 Lemonade)",60,0,0,0,0,0,0
-"Medium Sunjoy® (1/2 Unsweet Tea, 1/2 Lemonade)",90,0,0,0,0,0,0
-"Large Sunjoy® (1/2 Unsweet Tea, 1/2 Lemonade)",140,0,0,0,0,0,0
-"Small Sunjoy® (1/2 Unsweet Tea, 1/2 Diet Lemonade)",15,0,0,0,0,0,0
-"Medium Sunjoy® (1/2 Unsweet Tea, 1/2 Diet Lemonade)",20,0,0,0,0,0,0
-"Large Sunjoy® (1/2 Unsweet Tea, 1/2 Diet Lemonade)",35,0,0,0,0,0,0
+Small Sunjoy® (1/2 Sweet Tea 1/2 Lemonade),120,0,0,0,0,0,0
+Medium Sunjoy® (1/2 Sweet Tea 1/2 Lemonade),170,0,0,0,0,0,0
+Large Sunjoy® (1/2 Sweet Tea 1/2 Lemonade),260,0,0,0,0,0,0
+Small Sunjoy® (1/2 Sweet Tea 1/2 Diet Lemonade),80,0,0,0,0,0,0
+Medium Sunjoy® (1/2 Sweet Tea  1/2 Diet Lemonade),100,0,0,0,0,0,0
+Large Sunjoy® (1/2 Sweet Tea  1/2 Diet Lemonade),140,0,0,0,0,0,0
+Small Sunjoy® (1/2 Unsweet Tea  1/2 Lemonade),60,0,0,0,0,0,0
+Medium Sunjoy® (1/2 Unsweet Tea  1/2 Lemonade),90,0,0,0,0,0,0
+Large Sunjoy® (1/2 Unsweet Tea  1/2 Lemonade),140,0,0,0,0,0,0
+Small Sunjoy® (1/2 Unsweet Tea  1/2 Diet Lemonade),15,0,0,0,0,0,0
+Medium Sunjoy® (1/2 Unsweet Tea  1/2 Diet Lemonade),20,0,0,0,0,0,0
+Large Sunjoy® (1/2 Unsweet Tea  1/2 Diet Lemonade),35,0,0,0,0,0,0
 Small Coca-Cola®,100,0,0,0,0,0,0
 Medium Coca-Cola®,140,0,0,0,0,0,0
 Large Coca-Cola®,230,0,0,0,0,0,0
@@ -64,10 +65,10 @@ Gallon Chick-fil-A® Lemonade,2090,0,0,0,0,0,0
 Gallon Chick-fil-A® Diet Lemonade,460,0,0,0,0,0,0
 Gallon Freshly-Brewed Iced Tea Sweetened,1540,0,0,0,0,0,0
 Gallon Freshly-Brewed Iced Tea Unsweetened,0,0,0,0,0,0,0
-"Gallon Sunjoy® (1/2 Sweet Tea, 1/2 Lemonade)",1830,0,0,0,0,0,0
-"Gallon Sunjoy® (1/2 Sweet Tea, 1/2 Diet Lemonade)",1030,0,0,0,0,0,0
-"Gallon Sunjoy® (1/2 Unsweet Tea, 1/2 Lemonade)",1040,0,0,0,0,0,0
-"Gallon Sunjoy® (1/2 Unsweet Tea, 1/2 Diet Lemonade)",240,0,0,0,0,0,0
+Gallon Sunjoy® (1/2 Sweet Tea 1/2 Lemonade),1830,0,0,0,0,0,0
+Gallon Sunjoy® (1/2 Sweet Tea 1/2 Diet Lemonade),1030,0,0,0,0,0,0
+Gallon Sunjoy® (1/2 Unsweet Tea 1/2 Lemonade),1040,0,0,0,0,0,0
+Gallon Sunjoy® (1/2 Unsweet Tea 1/2 Diet Lemonade),240,0,0,0,0,0,0
 Side Salad,470,1,0,0,1,0,0
 Kale Crunch Side,120,0,0,0,0,1,0
 Waffle Potato Chips,220,0,0,0,0,0,0
@@ -181,12 +182,12 @@ Large Kale Crunch Side Tray,1260,0,0,0,0,0,0
 Chick-fil-A® Chicken Biscuit,460,1,1,1,1,0,0
 Spicy Chicken Biscuit,430,1,1,1,1,0,0
 Egg White Grill,290,1,1,1,1,0,0
-"Chicken, Egg & Cheese Biscuit",530,1,1,1,1,0,0
-"Bacon, Egg & Cheese Biscuit",420,1,1,1,1,0,0
-"Sausage, Egg & Cheese Biscuit",610,1,1,1,1,0,0
-"Chicken, Egg, & Cheese Muffin",420,1,1,1,1,0,0
-"Bacon, Egg & Cheese Muffin",310,1,1,1,1,0,0
-"Sausage, Egg & Cheese Muffin",500,1,1,1,1,0,0
+Chicken Egg & Cheese Biscuit,530,1,1,1,1,0,0
+Bacon  Egg & Cheese Biscuit,420,1,1,1,1,0,0
+Sausage  Egg & Cheese Biscuit,610,1,1,1,1,0,0
+Chicken  Egg  & Cheese Muffin,420,1,1,1,1,0,0
+Bacon  Egg & Cheese Muffin,310,1,1,1,1,0,0
+Sausage  Egg & Cheese Muffin,500,1,1,1,1,0,0
 Buttered Biscuit,290,1,0,1,1,0,0
 English Muffin,140,0,0,0,1,0,0
 Hash Browns,270,0,0,0,0,0,0
@@ -222,8 +223,8 @@ Zesty Apple Cider Vinaigrette Dressing,230,0,0,0,0,0,0
 Chick-fil-A® Nuggets,160,1,1,0,1,0,0
 Chilled Grilled Chicken Sub Sandwich,440,1,0,1,1,0,0
 Spicy Chilled Grilled Chicken Sub Sandwich,430,1,0,1,1,0,0
-"Gallon Chick-fil-A® Iced Tea (1/2 Sweet Tea, 1/2 Unsweet Tea)",790,0,0,0,0,0,0
-"Gallon Chick-fil-A® Lemonade (1/2 Lemonade, 1/2 Diet Lemonade)",1390,0,0,0,0,0,0
+Gallon Chick-fil-A® Iced Tea (1/2 Sweet Tea  1/2 Unsweet Tea),790,0,0,0,0,0,0
+Gallon Chick-fil-A® Lemonade (1/2 Lemonade  1/2 Diet Lemonade),1390,0,0,0,0,0,0
 Bottled Sweet Tea,190,0,0,0,0,0,0
 Bottled Unsweet Tea,0,0,0,0,0,0,0
 Bottled Lemonade,280,0,0,0,0,0,0
