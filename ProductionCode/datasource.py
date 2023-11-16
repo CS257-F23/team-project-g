@@ -73,7 +73,7 @@ class DataSource:
             query = "SELECT food FROM food_info"
             cursor.execute(query)
 
-            cursor.fetchall()
+            return cursor.fetchall()
 
         except Exception as e:
             print ("Something went wrong when executing the query: ", e)
